@@ -6,10 +6,12 @@
 
 $('.asBtn').on("click",function(event){
 	console.log("설정버튼 클릭");
-	$(this).next('.set_div').css("display","");
+	console.log($(this).next());
+	$(this).next('div.set_div').css("display","block");
 });
 
-$("#cancel_set").click(function() {
+$(".cancel_set").click(function() {
 	console.log("취소버튼 클릭");
-	$('.set_div').css('display','none');
+	console.log($(this).closest('div'));
+	$(this).closest('div').css('display','none');
 });

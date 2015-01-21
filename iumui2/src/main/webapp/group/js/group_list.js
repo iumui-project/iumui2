@@ -83,14 +83,14 @@ function loadMyGroups(pageNo) {
 		var myGroups = data.groups
 
 		if((data.status) == "success"){
-			
+			console.log(data.groups[2].formColor);
 			if(myGroups.length > 0){
 				
 				require(['text!sidebar/mygroup_table.html'], function(html){
 					var template = Handlebars.compile(html);
 					$('#my_group_list').append(template(data));
 					
-					$("th[userstate='1']").append("<span class=\"setting-btn\"></span>");
+					$(".my_groups th").append("<span class=\"setting-btn\"></span>");
 					
 					$(".setting-btn").load("set_div.html");
 					console.log("설정박스 생성 완료");
@@ -106,3 +106,4 @@ function loadMyGroups(pageNo) {
 	
 };
 /** 내가 가입한 모임 start*/
+

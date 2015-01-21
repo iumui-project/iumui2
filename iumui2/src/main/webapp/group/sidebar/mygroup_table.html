@@ -1,9 +1,9 @@
 {{#each groups}}
-<div class="groups">
-	<table class="my_groups" style="background-color:{{formColor}}">
+<div class="groups" data-value="{{gno}}">
+	<table class="my_groups">
 		<thead>
 			<tr>
-				<th colspan="2" class="g_name" userstate="{{userState}}"><a href="#grp_list_title">{{gname}}</a></th>
+				<th colspan="2" class="g_name" userstate="{{userState}}"><a href="#grp_list_title" style="color:{{formColor}}">{{gname}}</a></th>
 			</tr>
 			<tr>
 				<td class="group_intro g_td" colspan="2" class="g_intro">{{intro}}</td>
