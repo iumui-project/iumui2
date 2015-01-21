@@ -2,6 +2,7 @@ package java63.iumui.dao;
 
 import java.util.List;
 import java.util.Map;
+
 import java63.iumui.domain.Member;
 
 public interface MemberDao {
@@ -27,6 +28,10 @@ public interface MemberDao {
   int totalSize();
 
   Member userInfo(int mno); //회원정보 수정
+
+  String userInfo1(int mno); //회원정보 수정(로컬주소)
+  
+  void edit(Member member); //회원정보 수정(수정)
   
   
 }

@@ -34,19 +34,31 @@ public class Member implements Serializable{
   protected int 					 sex;
   protected String introWord;
   protected String selectLocal;
+  protected String localName;
   
   
-	@Override
-	public String toString() {
-		return "Member [memberNo=" + memberNo + ", email=" + email + ", password="
-				+ password + ", userName=" + userName + ", userPhoto=" + userPhoto
-				+ ", userPhotofile=" + userPhotofile + ", userPhotoList="
-				+ userPhotoList + ", birthDate=" + birthDate + ", nickName=" + nickName
-				+ ", phone=" + phone + ", sex=" + sex + ", selectLocal=" + selectLocal
-				+ "]";
-	}
+	
+	
 
-	public List<?> getUserPhotoList() {
+	@Override
+  public String toString() {
+    return "Member [memberNo=" + memberNo + ", email=" + email + ", password="
+        + password + ", userName=" + userName + ", userPhoto=" + userPhoto
+        + ", userPhotofile=" + userPhotofile + ", userPhotoList="
+        + userPhotoList + ", birthDate=" + birthDate + ", nickName=" + nickName
+        + ", phone=" + phone + ", sex=" + sex + ", introWord=" + introWord
+        + ", selectLocal=" + selectLocal + ", localName=" + localName + "]";
+  }
+
+  public String getLocalName() {
+    return localName;
+  }
+
+  public void setLocalName(String localName) {
+    this.localName = localName;
+  }
+
+  public List<?> getUserPhotoList() {
 		return userPhotoList;
 	}
 
