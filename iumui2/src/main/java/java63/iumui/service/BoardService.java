@@ -76,7 +76,7 @@ public class BoardService {
     return boardDao.selectComments(boardNo);
   }
   
-public List<?> getRequests(int boardNo) {
+  public List<?> getRequests(int boardNo) {
     
     return boardDao.selectRequests(boardNo);
   }
