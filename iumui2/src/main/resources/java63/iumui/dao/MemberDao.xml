@@ -20,8 +20,6 @@
     <result column="lname" property="localName"/>
   </resultMap>
   
-  
-  
   <sql id="memberSelect">
   	SELECT mno,email,pwd,uname,birth,nick,phone,sex,myphoto,intro,lcode
   	FROM members
@@ -74,26 +72,4 @@
         lcode = #{selectLocal}
     WHERE mno = #{memberNo}
   </update>
-  
-  
-  
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
