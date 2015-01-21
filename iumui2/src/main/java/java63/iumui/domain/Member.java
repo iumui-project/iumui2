@@ -2,7 +2,6 @@ package java63.iumui.domain;
 
 import java.io.Serializable;
 import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
 /*
@@ -32,14 +31,10 @@ public class Member implements Serializable{
   protected String 				 nickName;
   protected String 			   phone;
   protected int 					 sex;
-  protected String introWord;
-  protected String selectLocal;
-  protected String localName;
+  protected String		     introWord;
+  protected String         selectLocal;
+  protected String         localName;
   
-  
-	
-	
-
 	@Override
   public String toString() {
     return "Member [memberNo=" + memberNo + ", email=" + email + ", password="
