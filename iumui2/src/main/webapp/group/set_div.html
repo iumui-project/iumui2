@@ -1,0 +1,70 @@
+<img class="asBtn" src="../icon/32x32/row 3/14.png">
+<div class="set_div"> <!-- style="display:none;" -->
+	<table>
+		<tr>
+			<td>모임소개</td>
+			<td><input type="text" value="삐꾸빠꾸"/></td>
+		</tr>
+		<tr>
+			<td>배경색</td>
+			<td>
+				<div>
+					<table id="color-table">
+						<tr>
+							<td><div style="background-color : rgb(172, 114, 94);"></div></td>
+							<td><div style="background-color : rgb(208, 107, 100);"></div></td>
+							<td><div style="background-color : rgb(248, 58, 34);"></div></td>
+							<td><div style="background-color : rgb(250, 87, 60);"></div></td>
+							<td><div style="background-color : rgb(255, 117, 55);"></div></td>
+							<td><div style="background-color : rgb(255, 173, 70);"></div></td>
+						</tr>
+						<tr>
+							<td><div style="background-color : rgb(66, 214, 146);"></div></td>
+							<td><div style="background-color : rgb(208, 107, 100);"></div></td>
+							<td><div style="background-color : rgb(22, 167, 101);"></div></td>
+							<td><div style="background-color : rgb(123, 209, 72);"></div></td>
+							<td><div style="background-color : rgb(255, 233, 131);"></div></td>
+							<td><div style="background-color : rgb(250, 209, 101);"></div></td>
+						</tr>
+						<tr>
+							<td><div style="background-color : rgb(146, 225, 192);"></div></td>
+							<td><div style="background-color : rgb(159, 225, 231);"></div></td>
+							<td><div style="background-color : rgb(159, 198, 231);"></div></td>
+							<td><div style="background-color : rgb(73, 134, 231);"></div></td>
+							<td><div style="background-color : rgb(154, 156, 255);"></div></td>
+							<td><div style="background-color : rgb(185, 154, 255);"></div></td>
+						</tr>
+						<tr>
+							<td><div style="background-color : rgb(194, 194, 194);"></div></td>
+							<td><div style="background-color : rgb(202, 189, 191);"></div></td>
+							<td><div style="background-color : rgb(204, 166, 172);"></div></td>
+							<td><div style="background-color : rgb(246, 145, 178);"></div></td>
+							<td><div style="background-color : rgb(205, 116, 230);"></div></td>
+							<td><div style="background-color : rgb(164, 122, 226);"></div></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><button id="confirm_set">수정</button>  <button id="cancel_set" >취소</button></td>
+		</tr>
+	</table>
+	<script src='js/set_div.js'></script>
+	<script>
+		$("#color-table td").click(function(event){
+			console.log
+			$("> div" , this).html("V");
+		})	
+	
+		
+		$("#confirm_set").click(function(event){
+			
+			var thisTable = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent();
+			
+			thisTable.css("background-color",);
+			
+			$('.set_div').css('display','none');
+		});
+	</script>
+</div>
