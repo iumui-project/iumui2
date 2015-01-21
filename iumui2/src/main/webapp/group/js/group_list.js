@@ -72,30 +72,37 @@ function loadMySchedule() {
 
 /** 내가 가입한 모임 start*/
 function loadMyGroups(pageNo) {
-
+	
 	$.getJSON('../json/group/mygroups.do?pageNo='+ pageNo, 
 			function(data){
 
 		/** 확인용 로그*/
 		console.log("나의 모임 페이지 로드 : " + data.status);
-		console.log(data.groups);
 		/** 확인용 로그*/
 
 		var myGroups = data.groups
 
 		if((data.status) == "success"){
-			console.log('로딩이 성공하였습니다.');
+			
 			if(myGroups.length > 0){
+				
 				require(['text!sidebar/mygroup_table.html'], function(html){
 					var template = Handlebars.compile(html);
 					$('#my_group_list').append(template(data));
-					console.log("사이드바 2번 테이블 데이터 : " + $('#sidebar_table2_content').find('tr').length);
+					
+					$("th[userstate='1']").append("<span class=\"setting-btn\"></span>");
+					
+					$(".setting-btn").load("set_div.html");
+					console.log("설정박스 생성 완료");
+					
+					});
 				
-				});
 			} else {
 				$('#my_group_list').append("가입한 그룹이 없습니다");
+				
 			}
 		}
 	});
+	
 };
 /** 내가 가입한 모임 start*/
