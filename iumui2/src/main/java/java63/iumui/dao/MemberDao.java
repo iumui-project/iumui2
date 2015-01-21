@@ -2,7 +2,6 @@ package java63.iumui.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import java63.iumui.domain.Member;
 
 public interface MemberDao {
