@@ -2,6 +2,7 @@ package java63.iumui.control.json;
 
 import java.io.File;
 import java.util.HashMap;
+
 import java63.iumui.dao.MemberDao;
 import java63.iumui.domain.Member;
 import java63.iumui.service.MemberService;
@@ -25,6 +26,7 @@ public class MemberControl {
   @Autowired ServletContext servletContext;
   
   @RequestMapping(value="/add", method=RequestMethod.POST)
+
   public Object updataPhoto(Member member) throws Exception {
   	
   	if(member.getUserPhotofile() != null &&
@@ -83,6 +85,32 @@ public class MemberControl {
     resultMap.put("status", "success");    
     resultMap.put("member", member);
     
+    return resultMap;
+  }
+  
+  @RequestMapping("/user_info1")
+  public Object userInfo1(HttpSession session) throws Exception {
+    
+    Member loginUser =  (Member)session.getAttribute("loginUser");
+    
+    int mno = loginUser.getMemberNo();
+    System.out.println(mno);
+    String localName = memberService.getUserInfo1(mno);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");    
+    resultMap.put("localName", localName);
+    
+    return resultMap;
+  }
+  
+  @RequestMapping(value="/update", method=RequestMethod.POST)
+  public Object edit(Member member) throws Exception {
+    System.out.println(member);
+    memberService.edit(member);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
     return resultMap;
   }
   
