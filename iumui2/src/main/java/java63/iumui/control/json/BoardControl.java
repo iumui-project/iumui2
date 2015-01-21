@@ -99,12 +99,12 @@ public class BoardControl {
     resultMap.put("status", "success");
     resultMap.put("local_small", localService.getSmallList(no));
     
-    
     return resultMap;
   }
 
   @RequestMapping("/view")
-  public Object view(int no, 
+  public Object view(
+  		int no, 
       Model model, 
       HttpSession session) throws Exception {
     Board board = boardService.get(no);
@@ -151,7 +151,8 @@ public class BoardControl {
   }
   
   @RequestMapping("/recommend")
-  public Object recommend(int no, 
+  public Object recommend(
+  		int no, 
       HttpSession session) throws Exception {
     boardService.recommend(no, ((Member)session.getAttribute("loginUser")).getMemberNo());
     HashMap<String,Object> resultMap = new HashMap<>();
