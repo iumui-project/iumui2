@@ -73,7 +73,8 @@ public class MemberService {
   
   public String getUserInfo1(int mno) {
     String localName = memberDao.userInfo1(mno);
-    System.out.println("MEMBERSERVICE" + localName);
+    System.out.println("MEMBERSERVICE : " + localName);
+    
     return localName;
   }
 
