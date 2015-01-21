@@ -17,13 +17,15 @@ $(function(){
   });
 	
 	var address = unescape(location.href);
+	console.log(address);
 	var param = "";
 	if(address.indexOf("no", 0) != -1) {
 	        param = address.substring(address.indexOf("no", 0) + 3);
 	} else {
 	        param = "1";
 	}
-
+	console.log(address.indexOf("no", 0));
+	console.log(address.substring(address.indexOf("no", 0) + 3));
 	category_number = param;
 
 	loadBoardList(1);
@@ -106,6 +108,7 @@ function loadBoardList(pageNo) {
       	data.board[i].endDate = yyyyMMdd(data.board[i].endDate);
       }
       
+			data.board.reqCount++;
      
       require(['text!templates/category-button.html'], function(html){
         var template = Handlebars.compile(html);
