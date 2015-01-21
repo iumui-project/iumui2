@@ -21,12 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MemberControl {
 	static Logger log = Logger.getLogger(MemberControl.class);
 	
-	@Autowired MemberDao memberdao; 
-  @Autowired MemberService memberService;
-  @Autowired ServletContext servletContext;
+	@Autowired MemberDao       memberdao; 
+  @Autowired MemberService   memberService;
+  @Autowired ServletContext  servletContext;
   
   @RequestMapping(value="/add", method=RequestMethod.POST)
-
   public Object updataPhoto(Member member) throws Exception {
   	
   	if(member.getUserPhotofile() != null &&
@@ -48,7 +47,6 @@ public class MemberControl {
   	
   	return resultMap;
   }
-  
   
   public Object update (Member member) throws Exception {
   	memberService.update(member);
@@ -78,7 +76,6 @@ public class MemberControl {
     Member loginUser =  (Member)session.getAttribute("loginUser");
     
     int mno = loginUser.getMemberNo();
-    System.out.println(mno);
     Member member = memberService.getUserInfo(mno);
     
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -94,7 +91,6 @@ public class MemberControl {
     Member loginUser =  (Member)session.getAttribute("loginUser");
     
     int mno = loginUser.getMemberNo();
-    System.out.println(mno);
     String localName = memberService.getUserInfo1(mno);
     
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -111,21 +107,11 @@ public class MemberControl {
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
+    
     return resultMap;
   }
   
   
   
 }
-
-
-
-
-
-
-
-
-
-
-
 
