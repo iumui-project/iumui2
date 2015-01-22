@@ -108,6 +108,7 @@ function loadBoardList(pageNo) {
       	data.board[i].endDate = yyyyMMdd(data.board[i].endDate);
       	data.board[i].reqCount++;
       }
+      
      
       require(['text!templates/category-button.html'], function(html){
         var template = Handlebars.compile(html);
