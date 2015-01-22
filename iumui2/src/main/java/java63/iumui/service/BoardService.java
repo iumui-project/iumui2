@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/* Service 컴포넌트의 역할
+ * => 비즈니스 로직 수행
+ * => 트랜잭션 관리
+ */
+
 @Service
 public class BoardService {
   @Autowired
@@ -20,6 +25,7 @@ public class BoardService {
    
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("categoryNo", categoryNo);
+    //paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageNo", pageNo);
     paramMap.put("pageSize", pageSize);
     
@@ -76,7 +82,7 @@ public class BoardService {
     return boardDao.selectComments(boardNo);
   }
   
-  public List<?> getRequests(int boardNo) {
+public List<?> getRequests(int boardNo) {
     
     return boardDao.selectRequests(boardNo);
   }
@@ -87,7 +93,6 @@ public class BoardService {
   public void addComment(BoardComment boardComment) {
     boardDao.insertComment(boardComment); 
   }
-  
   @Transactional(
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)
