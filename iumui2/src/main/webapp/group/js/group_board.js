@@ -26,6 +26,8 @@ $(function(){
 	
 });
 
+
+//현재 페이지의 URL값을 가져옵니다.
 function getUrlParameter(sParam)
 {
     var sPageURL = window.location.search.substring(1);
@@ -39,8 +41,8 @@ function getUrlParameter(sParam)
         }
     }
 }
-//[출처] jquery Get url parameter|작성자 노력쟁이 학제
 
+/** 댓글 작동 js소스 : 막아놓았습니다.*/
 //$("#show_reply").click(function(){
 //	if ($('#reply').css('display') == 'none'){
 //		$('#reply').css('display','');
