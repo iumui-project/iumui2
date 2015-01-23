@@ -40,6 +40,17 @@ public class BoardService {
     return maxPageNo;
   }
   
+  public int getMessageCount(int memberNo) {
+    int messageCount = boardDao.selectMessageCount(memberNo);
+    
+    return messageCount;
+  }
+  
+  public List<?> getMessage(int memberNo) {
+    
+    return boardDao.selectMessage(memberNo);
+  }
+  
   public List<?> getAllList() {
     
     return boardDao.selectAllList();
@@ -107,6 +118,7 @@ public List<?> getRequests(int boardNo) {
     boardDao.deleteComments(boardNo);
     boardDao.delete(boardNo);
   }
+
   @Transactional(
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)
@@ -149,6 +161,19 @@ public List<?> getRequests(int boardNo) {
     
     boardDao.requestReject(paramMap);
   }
+  /*
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void change_delete(int boardNo) {
+    boardDao.deleteRequests(boardNo);
+    
+    boardDao.deleteRequests(boardNo);
+    boardDao.deleteRecommends(boardNo);
+    boardDao.deleteComments(boardNo);
+    boardDao.delete(boardNo);
+  }
+  */
 }
 
 
