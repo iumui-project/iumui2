@@ -545,6 +545,9 @@ values(gno.nextval,'삼성아카테미 2기','삼성과 마이크로소프트의
  
 select * from ggroup;
 
+select * from user_constraints;
+alter table ggroup drop constraint SYS_C007193;
+
 delete gmembers;
  
 // ---------------------------------------------
