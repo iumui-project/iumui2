@@ -2,6 +2,8 @@ package java63.iumui.dao;
 
 import java.util.List;
 import java.util.Map;
+import java63.iumui.domain.Group;
+import java63.iumui.domain.GroupMember;
 
 /*
 Product selectOne(int no);
@@ -22,5 +24,8 @@ public interface GroupDao {
   int totalSize(int mno);
   
   void updateColor(Map<String,Object> params);
+  void insertGroup(Group group);
+  int selectNextVal();
+  void insertGroupMember(GroupMember groupMember);
   
 }

@@ -115,6 +115,8 @@ public List<?> getRequests(int boardNo) {
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)
   public void delete(int boardNo) {
+    boardDao.deleteRequests(boardNo);
+    boardDao.deleteRecommends(boardNo);
     boardDao.deleteComments(boardNo);
     boardDao.delete(boardNo);
   }

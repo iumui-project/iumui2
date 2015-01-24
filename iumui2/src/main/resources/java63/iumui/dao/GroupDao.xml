@@ -93,5 +93,20 @@
   	SET color=#{color}
 		WHERE gno=#{gno} AND mno=#{mno}  	
   </update>
+  
+  <insert id="insertGroup" parameterType="Group">
+    INSERT INTO ggroup 
+    VALUES (#{gno}, #{name},#{intro},#{expireDay})
+  </insert>
+  
+  <select id="selectNextVal" resultType="int">
+    SELECT gno.nextval FROM dual
+  </select>
+  
+  <insert id="insertGroupMember" parameterType="GroupMember">
+    INSERT INTO gmembers 
+    VALUES (grouping_no.nextval, #{groupNo},#{memberNo},#{managerStatus}, null)
+  </insert>
+
 </mapper>
 

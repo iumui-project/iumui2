@@ -143,6 +143,14 @@
     delete from bcomment where bno=#{no}
   </delete>
   
+  <delete id="deleteRequests" parameterType="int">
+    delete from request where bno=#{no}
+  </delete>
+  
+  <delete id="deleteRecommends" parameterType="int">
+    delete from recommend where bno=#{no}
+  </delete>
+  
   <select id="totalSize" parameterType="int" resultType="int">
     select count(bno) from iboard where bmno=#{value}
   </select>
