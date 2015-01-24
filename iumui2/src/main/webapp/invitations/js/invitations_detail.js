@@ -29,10 +29,10 @@ function loadBoard(boardNo) {
     function(data){
   		board = data.board;
   		loginUser = data.loginUser;
-  		console.log(data.board);
-  		console.log(data.loginUser);
-  		console.log(data.boardComments);
-  		console.log(data.boardRequests);
+  		//console.log(data.board);
+  		//console.log(data.loginUser);
+  		//console.log(data.boardComments);
+  		//console.log(data.boardRequests);
   		data.board.reqCount++;
   		$('#title').html(data.board.title);
   		$('#regDate').html(yyyyMMdd(data.board.regDate));
@@ -59,8 +59,9 @@ function loadBoard(boardNo) {
       		data.boardRequests[i].statusContent = "님이 참여 확정 되었습니다.";
       	} else if (data.boardRequests[i].statusNo == 2) {
       		data.boardRequests[i].statusContent = "님이 참여 거부 되었습니다.";
+      	} else if (data.boardRequests[i].statusNo == 3) {
+      		data.boardRequests[i].statusContent = "님이 참여 되었습니다.";
       	}
-      	
       }
   		
   		if ( loginUser && loginUser.memberNo==board.writerNo) 
@@ -86,6 +87,19 @@ function loadBoard(boardNo) {
         var template = Handlebars.compile(html);
         $('#commentSet').html( template(data) );
       });
+  		/*
+  		if (data.board.targetNumber == data.board.reqCount) {
+  			alert("목표 인원이 모집되어 모임을 생성하고 게시판을 삭제하겠습니다.");
+  			
+  			$.getJSON('../json/board/change_delete.do?no=' + boardNo, 
+  			    function(result){
+  				if (result.status == 'success') {
+  	        
+  	        location.href = "invitations.html?no=" + board.categoryNo;
+  	      }
+  			});
+  		}
+  		*/
     });
 }
 
@@ -248,21 +262,21 @@ $('#btnCReg').click(function(){
 	if (!validateComment()) return;
   
   $.post('../json/board/comment_add.do'
-      , {  /*서버에 보낼 데이터를 객체에 담아 넘긴다 */
+      , {  
 			  	boardNo : board.no,
 			  	comment : $('#ccontent').val()
       } 
-      , function(result){  /*서버로부터 응답을 받았을 때 호출될 메서드*/
+      , function(result){  
         if (result.status == "success") {
         		loadBoard(board.no);
           
-          $('#btncCancel').click(); // click 이벤트 발생시킴.
+          $('#btncCancel').click(); 
         } else {
           alert("등록 실패!");
         }
       } 
-      , 'json'  /*서버가 보낸 데이터를 JSON 형식으로 처리*/)
-    /*서버 요청이 실패했을 때 호출될 함수 등록*/   
+      , 'json'  )
+    
    .fail(function(jqXHR, textStatus, errorThrown){ 
      alert(textStatus + ":" + errorThrown);
    });
