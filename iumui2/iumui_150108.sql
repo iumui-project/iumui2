@@ -231,7 +231,7 @@ ALTER TABLE gboard
 CREATE TABLE ggroup (
 	gno INTEGER NOT NULL, /* 그룹번호 */
 	gname VARCHAR2(50) NOT NULL, /* 모임이름 */
-	gintro VARCHAR2(110) NOT NULL, /* 모임소개 */
+	gintro VARCHAR2(110), /* 모임소개 */
 	gend_date DATE NOT NULL, /* 종료일자 */
 	open_state INTEGER NOT NULL /* 공개여부 */
 );
