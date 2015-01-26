@@ -22,10 +22,10 @@ public interface GroupDao {
   List<?> selectUserSchedules(Map<String,Object> params);
   
   int totalSize(int mno);
+  int selectNextVal();
   
   void updateColor(Map<String,Object> params);
   void insertGroup(Group group);
-  int selectNextVal();
   void insertGroupMember(GroupMember groupMember);
   
 }

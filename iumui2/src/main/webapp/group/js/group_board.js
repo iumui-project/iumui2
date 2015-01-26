@@ -15,7 +15,7 @@ $(function(){
 	
 	var gno = getUrlParameter("gno");
 
-	$.getJSON('../group/group_board.do?gno=' + gno , 
+	$.getJSON('../group/group.do?gno=' + gno , 
 			function(data){
 		
 		/**사이드 1번 테이블 제목 삽입 start*/

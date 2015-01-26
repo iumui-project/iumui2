@@ -103,7 +103,7 @@ public class GroupControl {
 		return resultMap;
 	}
 	
-	@RequestMapping("/group_board")
+	@RequestMapping("/group")
 	public Object loadGroupPage ( 
 			HttpSession session,
 			int gno ) throws Exception {
