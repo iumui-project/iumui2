@@ -11,7 +11,7 @@ $(function(){
 	$('.gboard_reply').load('group_board_reply.html');
 
 	loadMyGroups(1);
-	loadSideMenu();
+	loadSideMenu(); 
 	
 	var gno = getUrlParameter("gno");
 
