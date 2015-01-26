@@ -43,13 +43,13 @@ function getUrlParameter(sParam)
 }
 
 /** 댓글 작동 js소스 : 막아놓았습니다.*/
-//$("#show_reply").click(function(){
-//	if ($('#reply').css('display') == 'none'){
-//		$('#reply').css('display','');
-//	} else {
-//		$('#reply').css('display','none');
-//	}
-//});
+$("#show_reply").click(function(){
+	if ($('#reply').css('display') == 'none'){
+		$('#reply').css('display','');
+	} else {
+		$('#reply').css('display','none');
+	}
+});
 
 /** 나의 모임 start */
 function loadMyGroups(pageNo) {
