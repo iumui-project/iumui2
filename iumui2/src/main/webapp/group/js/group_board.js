@@ -22,6 +22,9 @@ $(function(){
 		$('#commentInput' + $(this).attr('data-no')).css('display', 'none');
 	});
 	
+
+	
+
 	loadMyGroups(1);
 	loadSideMenu(); 
 	
@@ -37,6 +40,37 @@ $(function(){
 		/**사이드 1번 테이블 제목 삽입 end*/
 		
 	});
+	
+	$(document).on('click', '.btnCReg', function(){
+
+		if ($('#ccontent' + $(this).attr('gb-no')).val().length == 0 ){
+			alert('글을 입력 하세요.');
+			return;
+		}
+
+	  $.post('../group/add_comment.do'
+	      , {
+	      		groupBoardNo : $(this).attr('gb-no'),
+	      		groupNo : gno,
+				  	content : $('#ccontent' + $(this).attr('gb-no')).val()
+	      } 
+	      , function(result){  
+	        if (result.status == "success") {
+	        	
+	        	loadGroupBoard();
+	        	
+	        } else {
+	          alert("등록 실패!");
+	        }
+	      } 
+	      , 'json'  )
+	    
+	   .fail(function(jqXHR, textStatus, errorThrown){ 
+	     alert(textStatus + ":" + errorThrown);
+	   });
+
+	});
+	
 });
 
 function loadGroupBoard() {

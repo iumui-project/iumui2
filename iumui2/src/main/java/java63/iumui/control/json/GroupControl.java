@@ -1,9 +1,9 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
-
 import java63.iumui.domain.Group;
 import java63.iumui.domain.GroupBoard;
+import java63.iumui.domain.GroupBoardComment;
 import java63.iumui.domain.GroupMember;
 import java63.iumui.domain.Member;
 import java63.iumui.service.GroupBoardService;
@@ -179,5 +179,23 @@ public class GroupControl {
     
     return resultMap;
   }
-
+	
+	@RequestMapping(value="/add_comment", method=RequestMethod.POST)
+  public Object add_comment(
+      GroupBoardComment groupBoardComment,
+      HttpSession session) throws Exception {  
+   
+	  groupBoardComment.setGroupMemberNo(
+        groupBoardService.getGroupMemberNo(
+            groupBoardComment.getGroupNo(), 
+        ((Member)session.getAttribute("loginUser")).getMemberNo()));
+    
+    groupBoardService.addGroupBoardComment(groupBoardComment);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("no", groupBoardComment.getNo());
+    
+    return resultMap;
+  }
 }

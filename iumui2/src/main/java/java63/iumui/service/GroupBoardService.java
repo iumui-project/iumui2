@@ -2,9 +2,9 @@ package java63.iumui.service;
 
 import java.util.HashMap;
 import java.util.List;
-
 import java63.iumui.dao.GroupBoardDao;
 import java63.iumui.domain.GroupBoard;
+import java63.iumui.domain.GroupBoardComment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +48,11 @@ public class GroupBoardService {
   public void addGroupBoard(GroupBoard groupBoard) {
     groupBoardDao.insertGroupBoard(groupBoard);
   }
- 
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void addGroupBoardComment(GroupBoardComment groupBoardComment) {
+    groupBoardDao.insertGroupBoardComment(groupBoardComment);
+  }
 }

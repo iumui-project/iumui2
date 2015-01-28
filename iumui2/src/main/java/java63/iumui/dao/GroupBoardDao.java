@@ -3,6 +3,7 @@ package java63.iumui.dao;
 import java.util.List;
 import java.util.Map;
 import java63.iumui.domain.GroupBoard;
+import java63.iumui.domain.GroupBoardComment;
 
 
 public interface GroupBoardDao {
@@ -11,6 +12,7 @@ public interface GroupBoardDao {
   List<?> selectComments(int no);
   int selectGroupMemberNo(Map<String,Object>paramMap);
   void insertGroupBoard(GroupBoard groupBoard);
+  void insertGroupBoardComment(GroupBoardComment groupBoardComment);
   /*
   List<?> selectAllList();
   List<?> selectList(Map<String,Object>paramMap);

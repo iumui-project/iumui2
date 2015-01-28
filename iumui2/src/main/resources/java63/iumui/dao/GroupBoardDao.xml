@@ -54,6 +54,11 @@
     values (gbno.nextval, #{groupMemberNo},#{content},sysdate)
   </insert>
   
+  <insert id="insertGroupBoardComment" parameterType="GroupBoardComment">
+    insert into gcomment
+    values (gbcno.nextval, #{groupBoardNo}, #{groupMemberNo}, #{content}, sysdate)
+  </insert>
+  
   <!-- 
   <insert id="insertComment" parameterType="BoardComment">
     INSERT INTO bcomment 
