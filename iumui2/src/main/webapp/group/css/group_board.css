@@ -40,6 +40,7 @@ div{
 
 .ccontent { display:inline; resize:none;}
 
+.btnBModDel {float: right;}
 
 .writer_photo { float: left; font-size: small; width: 80px; height: 67px; } 
 
