@@ -10,23 +10,30 @@
     </tr>
     <tr>
       <td class='uploaded_date'>{{regDate}}</td>
-      <td>
-        <div class='btnBModDel'>
-          <button type="button" id="btnBoardMod" class="btn btn-default btn-xs board_writer">
+      
+    </tr>
+  </table>
+        <div id='btnBModDel{{no}}' class='btnBModDel'>
+          <button type="button" id="btnBoardMod{{no}}" gb-no='{{no}}' class="btn btn-default btn-xs btnBoardMod">
             수정
           </button> &nbsp; 
-          <button type="button" id="btnBoardDel" class="btn btn-default btn-xs board_writer">
+          <button type="button" id="btnBoardDel{{no}}" gb-no='{{no}}' class="btn btn-default btn-xs btnBoardDel">
              삭제
            </button> &nbsp; 
          </div>
-       </td>
-    </tr>
-  </table>
 
 </div>  
 <br>
 
-<div class='usercontent'>{{content}}</div>
+<div id='usercontent{{no}}' class='usercontent'>{{content}}</div>
+
+<div id='modify_content{{no}}' style='text-align:center;display:none;'>
+          <textarea id='bcontent{{no}}' class="form-control form-group-sm"></textarea>
+          <div style='padding:10px;'>
+              <button type="button" gb-no='{{no}}' class="btn btn-default btn-xs btnBmod">수정</button> &nbsp; 
+              <button type="button" gb-no='{{no}}' class="btn btn-default btn-xs btnbCancel">취소</button>
+          </div>
+</div>
 
 <div><a id='btnComment{{no}}' class='btn btn-danger btn-xs btnComment' data-no='{{no}}'>댓글</a></div>
   
