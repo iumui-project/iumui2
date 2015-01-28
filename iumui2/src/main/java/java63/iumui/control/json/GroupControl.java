@@ -157,6 +157,7 @@ public class GroupControl {
     resultMap.put("status", "success");
     resultMap.put("groupBoards", groupBoardService.getList(no));
     resultMap.put("loginUser", (Member)session.getAttribute("loginUser"));
+    
     resultMap.put("groupBoardComments", groupBoardService.getComments(no));
     return resultMap;
   }
