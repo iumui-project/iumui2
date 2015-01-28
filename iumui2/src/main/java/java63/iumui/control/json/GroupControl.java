@@ -199,7 +199,7 @@ public class GroupControl {
     resultMap.put("no", groupBoardComment.getNo());
     
     return resultMap;
-  }
+  } 
 	
 	@RequestMapping("/groupschedules")
 	public Object getGroupSchedules ( 
