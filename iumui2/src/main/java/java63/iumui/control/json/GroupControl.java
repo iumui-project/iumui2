@@ -1,6 +1,7 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
+
 import java63.iumui.domain.Group;
 import java63.iumui.domain.GroupBoard;
 import java63.iumui.domain.GroupBoardComment;
@@ -199,4 +200,17 @@ public class GroupControl {
     
     return resultMap;
   }
+	
+	@RequestMapping("/groupschedules")
+	public Object getGroupSchedules ( 
+			int gno) throws Exception {
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("schedules", groupService.getGroupSchedules(gno));
+		
+		System.out.println("데이터 확인 : " + groupService.getGroupSchedules(gno));
+		
+		return resultMap;
+	}
 }
