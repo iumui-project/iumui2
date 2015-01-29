@@ -399,5 +399,4 @@ function yyyyMMdd(date) {
 }
 
 /** 그룹 메뉴 end */
-/*
 
