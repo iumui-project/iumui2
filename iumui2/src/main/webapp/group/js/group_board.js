@@ -194,6 +194,11 @@ $(document).on('click', '.btnbCancel', function(){
 });
 
 $(document).on('click', '.btnBmod', function(){
+	if ( !loginUser ) {
+		alert("로그인 하세요.");
+		return;
+	}
+	
 	var sNo = $(this).attr('gb-no');
 	for (var i in groupBoards) {
 		if (groupBoards[i].no == sNo) {
@@ -221,15 +226,14 @@ function updateGroupBoard(sNo) {
       } 
       , function(result){  
         if (result.status == "success") {
-        	alert("수정 성공");
-        	
         	loadGroupBoard();
-        	
         	
         	$('#usercontent' + sNo).css('display', '');
         	$('#bcontent' + sNo).val('');
         	$('#modify_content' + sNo).css('display', 'none');
         	
+        	alert("수정 성공");
+        
         } else {
           alert("등록 실패!");
         }
@@ -313,9 +317,9 @@ $('#uploadbtn').click(function(){
       } 
       , function(result){  
         if (result.status == "success") {
-        	alert("등록 성공");
         	
         	loadGroupBoard();
+        	alert("등록 성공");
         	$('#upload_content').val('');
         } else {
           alert("등록 실패!");
@@ -335,30 +339,6 @@ function validateReg() {
   }
   return true;
 }
-
-$(document).on('click', '.btnBmod', function(){
-	if ( !loginUser ) {
-		alert("로그인 하세요.");
-		return;
-	}
-	
-	var sNo = $(this).attr('gb-no');
-	for (var i in groupBoards) {
-		if (groupBoards[i].no == sNo) {
-			if (groupBoards[i].content == $('#bcontent' + sNo).val()) {
-		    alert('변경한 것이 없습니다!');
-		    return;
-		  }
-		}
-	}
-   
-	 if ( $('#bcontent' + sNo).val().length == 0) {
-	    alert('내용을 입력하세요.');
-	    return;
-	  }
-  
-  updateGroupBoard(sNo);
-});
 
 $(document).on('click', '.btnBoardDel', function(){
 	if ( !loginUser ) {
