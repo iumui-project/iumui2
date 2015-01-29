@@ -13,6 +13,9 @@ public interface GroupBoardDao {
   int selectGroupMemberNo(Map<String,Object>paramMap);
   void insertGroupBoard(GroupBoard groupBoard);
   void insertGroupBoardComment(GroupBoardComment groupBoardComment);
+  void updateGroupBoard(GroupBoard groupBoard);
+  void deleteComments(int no);
+  void delete(int no);
   /*
   List<?> selectAllList();
   List<?> selectList(Map<String,Object>paramMap);

@@ -2,6 +2,7 @@ package java63.iumui.service;
 
 import java.util.HashMap;
 import java.util.List;
+
 import java63.iumui.dao.GroupBoardDao;
 import java63.iumui.domain.GroupBoard;
 import java63.iumui.domain.GroupBoardComment;
@@ -55,4 +56,20 @@ public class GroupBoardService {
   public void addGroupBoardComment(GroupBoardComment groupBoardComment) {
     groupBoardDao.insertGroupBoardComment(groupBoardComment);
   }
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void updateGroupBoard(GroupBoard groupBoard) {
+    groupBoardDao.updateGroupBoard(groupBoard);
+  }
+
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void delete(int groupBoardNo) {
+    groupBoardDao.deleteComments(groupBoardNo);
+    groupBoardDao.delete(groupBoardNo);
+  }
+
 }

@@ -1,6 +1,7 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
+
 import java63.iumui.domain.GroupBoard;
 import java63.iumui.domain.GroupBoardComment;
 import java63.iumui.domain.Member;
@@ -24,7 +25,6 @@ public class GroupBoardControl {
 	@Autowired GroupBoardService       groupBoardService;
 	@Autowired ServletContext 		 servletContext;
 
-	
 	@RequestMapping("/board_list")
   public Object group_board(int no, 
       Model model, 
@@ -77,4 +77,26 @@ public class GroupBoardControl {
     return resultMap;
   }
 	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+  public Object update(
+      GroupBoard groupBoard,
+      HttpSession session) throws Exception {  
+    
+    groupBoardService.updateGroupBoard(groupBoard);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("no", groupBoard.getNo());
+    
+    return resultMap;
+  }
+	
+	@RequestMapping("/delete")
+  public Object delete(int no) throws Exception {
+	  groupBoardService.delete(no);
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    
+    return resultMap;
+  }
 }
