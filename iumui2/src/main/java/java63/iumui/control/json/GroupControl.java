@@ -70,22 +70,6 @@ public class GroupControl {
 		return resultMap;
 	}
 	
-	@RequestMapping("/myschedules")
-	public Object getUserSchedules ( 
-			HttpSession session, 
-			int dataSize) throws Exception {
-		
-		Member loginUser = (Member) session.getAttribute("loginUser");
-		
-		int mno = loginUser.getMemberNo();
-		
-		HashMap<String,Object> resultMap = new HashMap<>();
-		resultMap.put("status", "success");
-		resultMap.put("schedules", groupService.getUserSchedules(mno, dataSize));
-		
-		return resultMap;
-	}
-	
 	@RequestMapping("/updateColor")
 	public Object updateFormColor ( 
 			HttpSession session,
