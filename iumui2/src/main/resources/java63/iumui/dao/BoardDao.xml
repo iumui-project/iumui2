@@ -50,7 +50,10 @@
 									<where> 
 								    <if test="categoryNo != null">
 								         b.mno=m.mno and b.bmno=#{categoryNo}
-								    </if> 
+								    </if>
+                  <if test='boardSelectLocal != ""'>
+                       and b.lcode=#{boardSelectLocal}
+                  </if> 
 								    <if test='boardSearchText != ""'>
 								        and (b.bname like #{boardSearchText}
 								        or b.bintro like #{boardSearchText}
@@ -167,6 +170,9 @@
     <where> 
       <if test="categoryNo != null">
            b.mno = m.mno and b.bmno=#{categoryNo}
+      </if>
+      <if test='boardSelectLocal != ""'>
+           and b.lcode=#{boardSelectLocal}
       </if> 
       <if test='boardSearchText != ""'>
           and (b.bname like #{boardSearchText}

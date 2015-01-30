@@ -47,12 +47,18 @@ public class BoardControl {
       @RequestParam(defaultValue="1") int no,
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="5") int pageSize,
-      String boardSearchText) throws Exception {
+      String boardSearchText,
+      String boardSelectLocal,
+      HttpSession session) throws Exception {
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
     
-    int maxPageNo = boardService.getMaxPageNo(no, pageSize, boardSearchText);
+    if (boardSelectLocal == "") {
+      boardSelectLocal = ((Member)session.getAttribute("loginUser")).getSelectLocal();
+    }
+    
+    int maxPageNo = boardService.getMaxPageNo(no, pageSize, boardSearchText, boardSelectLocal );
     
     if (pageNo <= 0) pageNo = 1;
     if (pageNo > maxPageNo) pageNo = maxPageNo;
@@ -64,7 +70,7 @@ public class BoardControl {
     resultMap.put("maxPageNo", maxPageNo);
     
     resultMap.put("category", categoryService.getCategory());
-    resultMap.put("board", boardService.getList(no, pageNo, pageSize, boardSearchText));
+    resultMap.put("board", boardService.getList(no, pageNo, pageSize, boardSearchText, boardSelectLocal));
     
     return resultMap;
   }
@@ -99,6 +105,34 @@ public class BoardControl {
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("local_small", localService.getSmallList(no));
+    
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("/mylocal_big")
+  public Object mylocal_big(
+      HttpSession session) throws Exception {
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("local_big", localService.getBigList());
+    resultMap.put("mylocal_big", localService.getMyBigZone(
+        ((Member)session.getAttribute("loginUser")).getMemberNo()));
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("/mylocal_small")
+  public Object mylocal_small(
+      @RequestParam(defaultValue="1") int no,
+      HttpSession session) throws Exception {
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("local_small", localService.getSmallList(no));
+    resultMap.put("mylocal_small", localService.getMySmallZone(
+        ((Member)session.getAttribute("loginUser")).getMemberNo()));
     
     
     return resultMap;
