@@ -23,6 +23,22 @@ public class GroupScheduleControl {
 	@Autowired GroupBoardService   groupBoardService;
 	@Autowired ServletContext 		 servletContext;
 	
+	@RequestMapping("/myschedules")
+	public Object getUserSchedules ( 
+			HttpSession session, 
+			int dataSize) throws Exception {
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int mno = loginUser.getMemberNo();
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("schedules", groupService.getUserSchedules(mno, dataSize));
+		
+		return resultMap;
+	}
+	
 	@RequestMapping("/thisgroupschedule")
 	public Object getThisGroupSchedule (
 			HttpSession session,
