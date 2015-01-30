@@ -13,8 +13,10 @@ public class Group implements Serializable{
 	protected int               state;
 	protected Date              start;
 	protected Date              end;
+	protected String            title;
 	protected String            schedule;
 	protected String 					  color;
+	
 	
 	@Override
 	public String toString() {
@@ -53,11 +55,11 @@ public class Group implements Serializable{
 	public void setState(int state) {
 		this.state = state;
 	}
-	public String getSchedule() {
-		return schedule;
+	public String getTitle() {
+		return title;
 	}
-	public void setSchedule(String schedule) {
-		this.schedule = schedule;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getColor() {
 		return color;
@@ -71,16 +73,23 @@ public class Group implements Serializable{
 	public void setExpireDay(Date expireDay) {
 		this.expireDay = expireDay;
 	}
-	public Date getStartday() {
+	public Date getStart() {
 		return start;
 	}
-	public void setStartday(Date startday) {
+	public void setStart(Date startday) {
 		this.start = startday;
 	}
-	public Date getEnd() {
+	public String getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
+	public Date getEndday() {
 		return end;
 	}
-	public void setEnd(Date endday) {
+	public void setEndday(Date endday) {
 		this.end = endday;
 	}
+	
 }
