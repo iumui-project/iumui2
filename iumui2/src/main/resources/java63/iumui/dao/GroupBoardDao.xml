@@ -23,6 +23,7 @@
       gm.mno mno, m.uname uname, m.intro intro, b.gbcontent gbcontent, b.reg_date reg_date
     from members m, ggroup g, gmembers gm, gboard b 
     where g.gno=gm.gno and b.grouping_no=gm.grouping_no and m.mno=gm.mno and gm.gno=#{value}
+    order by b.gbno desc
   </select>
  
   <resultMap type="GroupBoardComment" id="boardCommentMap">
@@ -43,6 +44,7 @@
 		  gm.mno mno, m.uname uname, c.content content, c.reg_date reg_date
 		from members m, ggroup g, gmembers gm, gcomment c 
 		where g.gno=gm.gno and c.grouping_no=gm.grouping_no and m.mno=gm.mno and gm.gno=#{value}
+		<!-- order by c.gbcno desc -->
   </select>
   
   <select id="selectGroupMemberNo" parameterType="map" resultType="int">
