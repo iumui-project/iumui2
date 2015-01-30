@@ -46,12 +46,13 @@ public class BoardControl {
   public Object list(
       @RequestParam(defaultValue="1") int no,
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int pageSize) throws Exception {
+      @RequestParam(defaultValue="5") int pageSize,
+      String boardSearchText) throws Exception {
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
     
-    int maxPageNo = boardService.getMaxPageNo(no, pageSize);
+    int maxPageNo = boardService.getMaxPageNo(no, pageSize, boardSearchText);
     
     if (pageNo <= 0) pageNo = 1;
     if (pageNo > maxPageNo) pageNo = maxPageNo;
@@ -63,7 +64,7 @@ public class BoardControl {
     resultMap.put("maxPageNo", maxPageNo);
     
     resultMap.put("category", categoryService.getCategory());
-    resultMap.put("board", boardService.getList(no, pageNo, pageSize));
+    resultMap.put("board", boardService.getList(no, pageNo, pageSize, boardSearchText));
     
     return resultMap;
   }

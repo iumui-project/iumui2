@@ -5,15 +5,18 @@
 var category_number;
 var currPageNo;
 var maxPageNo;
+var boardSearchText;
 
 $(function(){
 	$('.header').load('/iumui/common/header.html');
 	$('.footer').load('/iumui/common/footer.html');
-	$('.search_bar').load('/iumui/common/search_bar.html');
+/*	$('.search_bar').load('/iumui/common/search_bar.html');*/
+	
+	boardSearchText = "";
 	
 	$(document).on('click', '.table-hover a', function(){
 		category_number = $(this).attr('cat-no');
-		loadBoardList(1);
+		loadBoardList(1, boardSearchText);
   });
 	
 	var address = unescape(location.href);
@@ -28,31 +31,39 @@ $(function(){
 	console.log(address.substring(address.indexOf("no", 0) + 3));
 	category_number = param;
 
-	loadBoardList(1);
+	loadBoardList(1, boardSearchText);
+	
+	$('#searchBtn').click(function(){
+		if ($('#keyword').val().length == 0) {
+			alert("검색어를 입력하세요.");
+			return;
+		}
+		loadBoardList(1, $('#keyword').val());
+	});
 	
 });
 
 $(document).on('click', '#firstBtn', function(event){
 	if (currPageNo > 1) {
-	  loadBoardList(1);
+	  loadBoardList(1, boardSearchText);
 	}
 });
 
 $(document).on('click', '#prevBtn', function(event){
 	if (currPageNo > 10) {
-	  loadBoardList(parseInt((currPageNo-1)/10)*10);
+	  loadBoardList(parseInt((currPageNo-1)/10)*10, boardSearchText);
 	}
 });
 
 $(document).on('click', '#nextBtn', function(event){
 	if (currPageNo/10 < maxPageNo/10) {
-	  loadBoardList(parseInt((currPageNo+9)/10)*10 + 1);
+	  loadBoardList(parseInt((currPageNo+9)/10)*10 + 1, boardSearchText);
 	}
 });
 
 $(document).on('click', '#lastBtn', function(event){
 	if (currPageNo < maxPageNo) {
-	  loadBoardList(maxPageNo);
+	  loadBoardList(maxPageNo, boardSearchText);
 	}
 });
 
@@ -75,7 +86,7 @@ function setPageNo(currPageNo, maxPageNo) {
   		$('.mw_basic_page').append("&nbsp;<a id='p" + i + "'><span>" + i + "</span></a>");
 
   			$('#p' + i).click(function(){
-  				loadBoardList($(this).children("span").html());
+  				loadBoardList($(this).children("span").html(), boardSearchText);
   			});
   	}
 	}
@@ -96,10 +107,10 @@ function setPageNo(currPageNo, maxPageNo) {
   else $('#lastBtn').css('display', '');
 }
 
-function loadBoardList(pageNo) {
+function loadBoardList(pageNo, boardSearchText) {
 	if (pageNo <= 0) pageNo = currPageNo;
 	
-	$.getJSON('../json/board/list.do?no=' + category_number + '&pageNo=' + pageNo, 
+	$.getJSON('../json/board/list.do?no=' + category_number + '&pageNo=' + pageNo + '&boardSearchText=' + boardSearchText, 
     function(data){
 			setPageNo(data.currPageNo, data.maxPageNo);
       
@@ -108,7 +119,6 @@ function loadBoardList(pageNo) {
       	data.board[i].endDate = yyyyMMdd(data.board[i].endDate);
       	data.board[i].reqCount++;
       }
-      
      
       require(['text!templates/category-button.html'], function(html){
         var template = Handlebars.compile(html);

@@ -21,19 +21,31 @@ public class BoardService {
   @Autowired
   BoardDao boardDao;
   
-  public List<?> getList(int categoryNo, int pageNo, int pageSize) {
+  public List<?> getList(int categoryNo, int pageNo, int pageSize, String boardSearchText) {
    
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("categoryNo", categoryNo);
     //paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageNo", pageNo);
     paramMap.put("pageSize", pageSize);
+    boardSearchText = "%" + boardSearchText + "%";
+    
+    paramMap.put("boardSearchText", boardSearchText);
     
     return boardDao.selectList(paramMap);
   }
   
-  public int getMaxPageNo(int no, int pageSize) {
-    int totalSize = boardDao.totalSize(no);
+  public int getMaxPageNo(int no, int pageSize, String boardSearchText) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("categoryNo", no);
+    
+    boardSearchText = "%" + boardSearchText + "%";
+    
+    paramMap.put("boardSearchText", boardSearchText);
+        
+    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+no + "@@@@@@@@@@@@@@"+boardSearchText);
+    int totalSize = boardDao.totalSize(paramMap);
+    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+totalSize);
     int maxPageNo = totalSize / pageSize;
     if ((totalSize % pageSize) > 0) maxPageNo++;
     
