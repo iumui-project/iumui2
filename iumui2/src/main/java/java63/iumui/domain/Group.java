@@ -11,16 +11,16 @@ public class Group implements Serializable{
 	protected String            intro;
 	protected Date 			        expireDay;
 	protected int               state;
-	protected Date              startday;
-	protected Date              endday;
+	protected Date              start;
+	protected Date              end;
 	protected String            schedule;
 	protected String 					  color;
 	
 	@Override
 	public String toString() {
 		return "Group [gno=" + gno + ", name=" + name + ", intro=" + intro
-				+ ", expireDay=" + expireDay + ", state=" + state + ", startday="
-				+ startday + ", endday=" + endday + ", schedule=" + schedule
+				+ ", expireDay=" + expireDay + ", state=" + state + ", start="
+				+ start + ", end=" + end + ", schedule=" + schedule
 				+ ", color=" + color + "]";
 	}
 	public int getGno() {
@@ -72,15 +72,15 @@ public class Group implements Serializable{
 		this.expireDay = expireDay;
 	}
 	public Date getStartday() {
-		return startday;
+		return start;
 	}
 	public void setStartday(Date startday) {
-		this.startday = startday;
+		this.start = startday;
 	}
-	public Date getEndday() {
-		return endday;
+	public Date getEnd() {
+		return end;
 	}
-	public void setEndday(Date endday) {
-		this.endday = endday;
+	public void setEnd(Date endday) {
+		this.end = endday;
 	}
 }
