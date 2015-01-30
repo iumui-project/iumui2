@@ -144,7 +144,7 @@ $('input[name=gender]:radio').click(function(event){
          , function(result){
            if (result.status == "success") {
              alert("변경 성공! 메인페이지로 이동합니다.");
-             //location.href="/iumui/index.html";
+             location.href="/iumui/index.html";
              
            } else {
              alert("변경 실패!");

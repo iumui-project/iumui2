@@ -16,7 +16,6 @@ $(function(){
 
 	$(document).on('click', '.tableHead a', function(){
     loadProduct($(this).attr('category-no'));
-    
   });
 });
 /** 화면출력 end */
@@ -36,9 +35,6 @@ function loadBoardAllList() {
 
 /** 나의 모임 start */
 function loadMyGroups(pageNo) {
-	
-	
-
 	$.getJSON('../group/mygroups.do?pageNo='+ pageNo, 
 			function(data){
 
@@ -75,6 +71,7 @@ function loadMyGroups(pageNo) {
 				$('#sidebar_table2_content').append("가입한 그룹이 없습니다");
 			}
 		}
-	});
+	});//로그인시 멤버의 데이터를 불러옵니다.
+	
 };
 /** 나의 모임 end */
