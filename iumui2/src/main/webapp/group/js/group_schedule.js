@@ -23,10 +23,17 @@ $(function(){
 $(document).ready(function() {
 	
   $.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
+  	
 	  var schedules = data.schedules;
+	  
+	  console.log(schedules.length);
 	  var events = parseSchedules(schedules);
-	  var groupColor = schedules[0].formColor;
-
+	  var groupColor = "#222222";
+	  
+	  if(schedules.length > 0){
+	  	groupColor = schedules[0].formColor;
+	  }
+	  
 	  $('#calendar').fullCalendar({
 	    langs : 'ko', //언어설정
 	    header : {
@@ -174,7 +181,8 @@ function loadMyGroups4ThisPage(pageNo) {
 
 			if(myGroups.length > 0){
 					for (var i in myGroups){
-						$('#sidebar_table2_content').append("<tr><td id='groupNo"+ i +"' class=\"sidebar_title\"><a style=\"color:"+ data.groups[i].formColor +"\" href=\"group_board.html?gno="+ gno+"\">"+ data.groups[i].gname+"</td></tr>");
+						var thisGno = data.groups[i].gno;
+						$('#sidebar_table2_content').append("<tr><td id='groupNo"+ i +"' class=\"sidebar_title\"><a style=\"color:"+ data.groups[i].formColor +"\" href=\"group_schedule.html?gno="+ thisGno +"\">"+ data.groups[i].gname+"</td></tr>");
 					}
 
 					var mgtRow = $('#sidebar_table2_content').find('tr').length;
