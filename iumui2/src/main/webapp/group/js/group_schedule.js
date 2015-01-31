@@ -22,7 +22,7 @@ $(function(){
 
 $(document).ready(function() {
 	
-  $.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
+  $.getJSON('..//json/member/thisgroupschedule.do?gno=' + gno, function(data) {
   	
 	  var schedules = data.schedules;
 	  
