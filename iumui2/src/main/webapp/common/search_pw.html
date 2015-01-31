@@ -2,17 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel='stylesheet' href='../css/bootstrap.css'>
+<link rel='stylesheet' href='../css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='../common/css/common.css'>
 <title>IUMUI_비밀번호 찾기</title>
 </head>
 <style>
-body {
+/* body {
 font-size: 12px;
 line-height: 140%;
 letter-spacing: -1px;
 word-spacing: 0;
 font-family: 'NanumGothic';
 color: #333;
-}
+} */
  
 table {
 display: table;
@@ -42,6 +45,7 @@ font-weight: normal;
 .pop_head {
 height: 67px;
 background: #fff;
+background-color: #F3F3F3;
 border-bottom: 3px solid #0e328a;
 position: relative;
 }
@@ -134,7 +138,7 @@ width: 125px;
 }
  
 .ml-5 {
-margin-left: 5px !important;
+margin-left: 15px !important;
 }
  
 .table02 th.last, .table02 td.last {
@@ -173,6 +177,14 @@ margin: 0px auto;
 </style>
 </head>
 <body>
+<div id='content_container'>
+
+<!-- header start -->
+<div class='header'></div>
+<!-- header end -->
+
+
+
 <form name="chkUserIdForm" id="chkUserIdForm" method="post" action="" onkeypress="if(event.keyCode==13){findId(); return false;}">
   <div class="wd-413">
     <div class="pop_head">
@@ -180,7 +192,7 @@ margin: 0px auto;
     </div>
     <div class="pop_content">
       <div class="pop_inbox">
-        <p class="h4-txt mb-10"><span class="color-16a3db">회원 아이디</span>를 잊어버리셨나요?<br>회원등록시 입력한대로 아래 정보를 입력해 주세요.</p>
+        <p class="h4-txt mb-10"><span class="color-16a3db">회원 비밀번호</span>를 잊어버리셨나요?<br>회원등록시 입력한대로 아래 정보를 입력해 주세요.</p>
           <fieldset>
             <table class="table02">
               <colgroup>
@@ -216,10 +228,12 @@ margin: 0px auto;
     </div>
   </div>
  <input type="hidden" name="__encrypted" value="pFHzn*9ahmTCYpIRwlMDE70iPXxk0SooQkkmk1QmiSrtg1JC1uRRAK9pK465SZZUPdKnPZmRgyI."></form>
+ </div>
  
 <script src='/iumui/js/jquery-1.11.1.js'></script>
 <script type="text/javascript" src='/iumui/js/handlebars-v2.0.0.js'></script>
 <script type="text/javascript" src='/iumui/js/require.js'></script>
+<script src='/iumui/common/js/signin.js'></script>
 <script src='/iumui/common/js/search_pw.js'></script>
 </body>
 </html>
