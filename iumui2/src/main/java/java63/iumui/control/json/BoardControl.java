@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/json/board")
 public class BoardControl {
   static Logger log = Logger.getLogger(BoardControl.class);
-  static final int PAGE_DEFAULT_SIZE = 5;
+  static final int PAGE_DEFAULT_SIZE = 10;
   
   @Autowired BoardService     boardService;
   @Autowired CategoryService     categoryService;
@@ -46,7 +46,7 @@ public class BoardControl {
   public Object list(
       @RequestParam(defaultValue="1") int no,
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int pageSize,
+      @RequestParam(defaultValue="10") int pageSize,
       String boardSearchText,
       String boardSelectLocal,
       HttpSession session) throws Exception {

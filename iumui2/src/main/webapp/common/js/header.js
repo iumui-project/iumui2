@@ -71,17 +71,25 @@ $.getJSON('../json/auth/loginUser.do', function(data){
 		
 		$.getJSON('../json/board/message.do', 
 		    function(mes){
-			//console.log(mes.messages);			
+		
+			$('#msg1').append($('<p>').html("게시판 바로 가기"));
+			
 			for (var i in mes.messages) {
+				
 				$('#msg1').append($('<br>'))
-										.append($('<p>').html(mes.messages[i].message));
-								
+										.append($('<p>').html("<a href='../invitations/invitations_detail.html?no=" 
+												+ mes.messages[i].boardNo + "' class='title' data-no='" 
+												+ mes.messages[i].boardNo + "'>" + (parseInt(i)+1) + ". " 
+												+ mes.messages[i].message + "</a>"));
+				/*
 				if ( mes.messages[i].state == 3) {
 					$('#msg1').append("<button type='button' " +
 							"class='btn btn-default btn-xs btnRAccept' reqDel='bno=" + 
-							mes.messages[i].bno + "&mno=" + mes.messages[i].mno +  
+							mes.messages[i].boardNo + "&mno=" + mes.messages[i].memberNo +  
 							">확인</button>");
+					
 				}
+				*/
 			}
 		});
 	}
