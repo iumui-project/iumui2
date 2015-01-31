@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 table { background-color: white; }
-#grp_intro { resize: none; }
+#content { resize: none; height:300px;}
 #uploadbtn { text-align:center; padding:10px; }
 .upload-btn { margin: 0 10px; }
 .btn-cancel { color: #fff; background-color: #d9534f; border-color: #d43f3a; }
