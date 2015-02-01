@@ -201,6 +201,23 @@ $('#grp_state').change(function(){
      $('#confirmNo').focus();
     
    }
+   
+   function phoneCheck1() {
+     if($('#confirmNo').val() == "1212"){
+       alert('인증 성공');       
+     }else if($('#confirmNo').val() == ""){
+       
+       alert("인증 실패.");
+     }
+     
+     $('#confirmNo').focus();
+    
+   }
+   
+   
+  
+   
+ 
      
      
        

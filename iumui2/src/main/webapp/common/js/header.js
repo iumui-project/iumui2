@@ -10,6 +10,35 @@
 //var logintester;
 
 $(function(){
+//최초 쿠키에 login_id라는 쿠키값이 존재하면
+  var inputId = $.cookie('inputId');
+  if(inputId != undefined) {
+      //아이디에 쿠키값을 담는다
+      $("#inputId").val(inputId);
+      //아이디저장 체크박스 체크를 해놓는다
+      $("#rememberid").prop("checked",true);
+  }
+  
+//로그인 버튼 클릭시
+  $("#loginSubmit").click(function(){
+      //아이디 미입력시
+      if($.trim($("#inputId").val()) == "") {
+          alert("아이디를 입력하세요");
+          return;
+      //아이디 입력시
+      } else {
+          //아이디저장 체크되어있으면 쿠키저장
+          if($("#rememberid").prop("checked")) {
+              $.cookie('inputId', $("#inputId").val());
+          //아이디저장 미체크면 쿠키에 정보가 있던간에 삭제
+          } else {
+              $.removeCookie("inputId");
+          }
+      }
+  });
+  
+  
+  
 	$('#my_loginBox').css('display', 'none');
 	$('#msg1').css('display', 'none'); 
 
