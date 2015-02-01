@@ -55,6 +55,21 @@ public class GroupScheduleControl {
 		return resultMap;
 	}
 	
+	@RequestMapping("/allgroupschedule")
+	public Object getAllGroupSchedule (
+			HttpSession session) throws Exception {
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int mno = loginUser.getMemberNo();
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("schedules", groupService.getAllGroupSchedules(mno));
+		
+		return resultMap;
+	}
+	
 	@RequestMapping("/newSchedule")
 	public Object getAllGroups ( 
 			HttpSession session,

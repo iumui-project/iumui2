@@ -55,6 +55,11 @@ public class GroupService {
   	return groupDao.selectThisGroupSchedules(paramMap);
   }
   
+  public List<?> getAllGroupSchedules (int mno) {
+  	
+  	return groupDao.selectAllGroupSchedules(mno);
+  }
+  
   public List<?> getMyGroup (int gno, int mno) {
   	
   	HashMap<String,Object> paramMap = new HashMap<>();

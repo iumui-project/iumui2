@@ -23,6 +23,7 @@ public interface GroupDao {
   
   List<?> selectUserSchedules(Map<String,Object> params);
   List<?> selectThisGroupSchedules(Map<String,Object> params);
+  List<?> selectAllGroupSchedules(int mno);
   
   int totalSize(int mno);
   int selectNextVal();
