@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("json.groupBoardControl")
 @RequestMapping("/group_board")
@@ -26,16 +27,19 @@ public class GroupBoardControl {
 	@Autowired ServletContext 		 servletContext;
 
 	@RequestMapping("/board_list")
-  public Object group_board(int no, 
+  public Object board_list(
+      int no, 
       Model model, 
       HttpSession session) throws Exception {
-	  
+	  Member member = (Member)session.getAttribute("loginUser");
     HashMap<String,Object> resultMap = new HashMap<>();
+    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + member.getMemberNo());
+    System.out.println("############################################" + no);
     resultMap.put("status", "success");
-    resultMap.put("groupBoards", groupBoardService.getList(no));
-    resultMap.put("loginUser", (Member)session.getAttribute("loginUser"));
+    resultMap.put("groupBoards", groupBoardService.getList(no, member.getMemberNo()));
+    resultMap.put("loginUser", member);
     
-    resultMap.put("groupBoardComments", groupBoardService.getComments(no));
+    resultMap.put("groupBoardComments", groupBoardService.getComments(no, member.getMemberNo()));
     return resultMap;
   }
 
