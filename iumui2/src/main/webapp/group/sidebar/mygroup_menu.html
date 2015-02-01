@@ -10,18 +10,21 @@
 <script>
 var gno = getUrlParameter("gno");
 
-$('#m1 a ').attr('href','group_board.html?gno=' + gno);
-$('#m3 a ').attr('href','group_schedule.html?gno=' + gno);
-$('#m4 a ').attr('href','group_members.html?gno=' + gno);
+$('#m1 a ').attr('href', 'group_board.html?gno=' + gno);
+$('#m3 a ').attr('href', 'group_schedule.html?gno=' + gno);
+$('#m4 a ').attr('href', 'group_members.html?gno=' + gno);
 
-$.getJSON('../group/group.do?gno=' + gno , 
-		function(data){
-	
-	$('title').html("IUMUI - " + data.group[0].name);
-	
-	/**사이드 1번 테이블 제목 삽입 start*/
-	$('#sidebar_contents1 a').html(data.group[0].name);
-	/**사이드 1번 테이블 제목 삽입 end*/
-});
+if (gno == 0) {
+  $('#sidebar_contents1 a').html("메뉴");
+ } else {
 
+  $.getJSON('../group/group.do?gno=' + gno, function(data) {
+
+	  //$('title').html("IUMUI - " + data.group[0].name);
+
+	  /**사이드 1번 테이블 제목 삽입 start*/
+	  $('#sidebar_contents1 a').html(data.group[0].name);
+	  /**사이드 1번 테이블 제목 삽입 end*/
+  });
+ }
 </script>
