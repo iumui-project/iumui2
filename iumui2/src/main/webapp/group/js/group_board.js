@@ -25,29 +25,8 @@ $(function(){
 	
 	loadMyGroups(1);
 	loadSideMenu(); 
-	
-	gno = getUrlParameter("gno");
-	if (!gno) {
-		gno = 0;
-		console.log("===================" + gno)
-		console.log("[" + gno + "]");
-		$('#board_upload').css('display', 'none');
-	} else {
-		$('#board_upload').css('display', '');
-	}
-	
-	
-	$.getJSON('../group/group.do?gno=' + gno , 
-			function(data){
-		
-		/**사이드 1번 테이블 제목 삽입 start*/
-		$('#sidebar_contents1 a').attr('href','#').html(data.group[0].name);
-		/**사이드 1번 테이블 제목 삽입 end*/
-		
-	});
-	
+	parseGno();
 	loadGroupBoard();
-	
 	
 	$(document).on('click', '.btnCReg', function(){
 
@@ -79,6 +58,18 @@ $(function(){
 	});
 	
 });
+
+function parseGno(){
+	gno = getUrlParameter("gno");
+	if (!gno) {
+		gno = 0;
+		console.log("===================" + gno)
+		console.log("[" + gno + "]");
+		$('#board_upload').css('display', 'none');
+	} else {
+		$('#board_upload').css('display', '');
+	}
+}
 
 function loadGroupBoard() {
 	$.getJSON('../group_board/board_list.do?no='+ gno, 

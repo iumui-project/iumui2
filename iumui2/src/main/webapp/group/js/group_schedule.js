@@ -12,7 +12,6 @@ var startday;
 $(function(){
 	$('.header').load('/iumui/common/header.html');
 	$('.footer').load('/iumui/common/footer.html');
-	
 	$('#sidebar_table1_content').load('sidebar/mygroup_menu.html');
 
 	loadMyGroups4ThisPage(1);
@@ -22,11 +21,54 @@ $(function(){
 
 $(document).ready(function() {
 	
-  $.getJSON('..//json/member/thisgroupschedule.do?gno=' + gno, function(data) {
+	loadThisGroupSchedules();
+	
+  $( "#newSchBtn" ).click(function() {
+  	var end = $('#tenddate').val();
+  	var title = $('#tschedule').val();
+  	var endday = new Date(end);
+  	
+  	console.log(endday - startday);
+  	
+  	if (end == "" && !$('#isexpanded').is(":checked")) {
+  		alert("종료일자를 지정해 주세요!");
+  		$('#tenddate').focus();
+  		return false;
+  	}//유효성 체크
+  	
+  	if(endday - startday < 0) {
+  		alert("종료일이 시작일보다 빠를 수 없습니다.");
+  		return false;
+  	}//유효성 체크
+  	
+  	if (title == '') {
+  		alert("내용을 입력해주세요!");
+  		$('#tschedule').focus();
+  		return false;
+  	}//유효성 체크
+  	
+  	console.log(startday + " : " + end + " : " + title);
+  	
+  });//일정 등록 버튼
+  
+});//ready
+
+function parseSchedules(schedules) {
+
+  for ( var i in schedules) {
+	  schedules[i].start = yyyyMMdd(schedules[i].start);
+
+	  if (schedules[i].end) {
+		  schedules[i].end = yyyyMMdd(schedules[i].end);
+	  }
+  }//스케쥴을 받아 fullcalendar가 읽을 수 있는 배열로 변경합니다.
+  return schedules;
+}
+
+function loadThisGroupSchedules(){
+$.getJSON('..//json/member/thisgroupschedule.do?gno=' + gno, function(data) {
   	
 	  var schedules = data.schedules;
-	  
-	  console.log(schedules.length);
 	  var events = parseSchedules(schedules);
 	  var groupColor = "#222222";
 	  
@@ -76,49 +118,8 @@ $(document).ready(function() {
 	        }
 	  				 ]
 	  });
-  });//getJSON
-  
-  $( "#newSchBtn" ).click(function() {
-  	var end = $('#tenddate').val();
-  	var title = $('#tschedule').val();
-  	var endday = new Date(end);
-  	
-  	console.log(endday - startday);
-  	
-  	if (end == "" && !$('#isexpanded').is(":checked")) {
-  		alert("종료일자를 지정해 주세요!");
-  		$('#tenddate').focus();
-  		return false;
-  	}//유효성 체크
-  	
-  	if(endday - startday < 0) {
-  		alert("종료일이 시작일보다 빠를 수 없습니다.");
-  		return false;
-  	}//유효성 체크
-  	
-  	if (title == '') {
-  		alert("내용을 입력해주세요!");
-  		$('#tschedule').focus();
-  		return false;
-  	}//유효성 체크
-  	
-  	console.log(startday + " : " + end + " : " + title);
-  	
-  });//일정 등록 버튼
-  
-});//ready
-
-function parseSchedules(schedules) {
-
-  for ( var i in schedules) {
-	  schedules[i].start = yyyyMMdd(schedules[i].start);
-
-	  if (schedules[i].end) {
-		  schedules[i].end = yyyyMMdd(schedules[i].end);
-	  }
-  }//스케쥴을 받아 fullcalendar가 읽을 수 있는 배열로 변경합니다.
-  return schedules;
-}
+  });//getJSON을 통해 현재 그룹의 스케쥴을 database에서 불러옵니다.
+}//loadThisGroupSchedules()
 
 function popup(date, jsEvent, view) {
   if ($('#popup').css('display') == 'none' && $('#groupBubble').css('display') == 'none') {

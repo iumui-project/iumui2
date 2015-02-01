@@ -82,6 +82,12 @@
  		  ORDER BY RNUM ASC
   </select>
   
+  <select id="selectRecommendedGroup" parameterType="int">
+  	SELECT T1.bmno, T1.bno, T1.bname, T1.lcode FROM iboard T1, members T2
+		WHERE T2.mno = #{mno} AND T1.lcode = T2.lcode
+		ORDER BY DBMS_RANDOM.RANDOM
+  </select>
+  
   <select id="selectUserSchedules" parameterType="map" resultMap="userSchedules">
 		 SELECT ROWNUM rnum, startday, endday, cschedule, color
   			FROM   
@@ -100,6 +106,15 @@
   				(SELECT T1.startday startday, T1.endday endday, T1.cschedule cschedule, T2.color color
     				FROM GSCHEDULE T1, GMEMBERS T2, GGROUP T3
 	  				WHERE T1.GNO=#{gno} AND T1.GNO = T2.GNO AND T2.GNO = T3.GNO AND T2.MNO = #{mno})
+		  	ORDER BY startday ASC
+  </select>
+  
+  <select id="selectAllGroupSchedules" parameterType="int" resultMap="groupSchedules">
+		 SELECT *
+  			FROM 
+  				(SELECT T1.startday startday, T1.endday endday, T1.cschedule cschedule, T2.color color
+    				FROM GSCHEDULE T1, GMEMBERS T2, GGROUP T3
+	  				WHERE T2.MNO = 5 AND T2.GNO = T3.GNO AND T3.GNO = T1.GNO)
 		  	ORDER BY startday ASC
   </select>
   

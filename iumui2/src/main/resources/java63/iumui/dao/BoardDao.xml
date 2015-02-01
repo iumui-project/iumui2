@@ -119,11 +119,25 @@
     <result column="reg_date" property="commentRegDate"/>
   </resultMap>
 
-  <select id="selectComments" parameterType="int" 
-      resultMap="boardCommentMap">
+  <select id="selectComments" parameterType="int" resultMap="boardCommentMap">
 	  select c.bcno bcno, b.bno bno, m.uname uname, c.content content, c.redate reg_date from iboard b, bcomment c, members m
 	  where c.bno=b.bno and c.mno=m.mno and c.bno=#{value}
 	  order by bcno desc
+  </select>
+  
+  <resultMap type="map" id="recboardMap">
+    <result column="bmno" property="categoryNo"/>
+    <result column="bno" property="boardNo"/>
+    <result column="bname" property="boardTitle"/>
+    <result column="lcode" property="district"/>
+  </resultMap>
+  
+  <select id="selectRecommendedGroup" parameterType="map" resultMap="recboardMap">
+  	SELECT * FROM (SELECT T1.bmno, T1.bno, T1.bname, T1.lcode 
+										FROM iboard T1, members T2
+										WHERE T2.mno = #{mno} AND T1.lcode = T2.lcode
+										ORDER BY DBMS_RANDOM.RANDOM)
+		WHERE ROWNUM BETWEEN #{startIndex} AND #{startIndex}+5 
   </select>
   
   <resultMap type="BoardRequest" id="boardRequestMap">

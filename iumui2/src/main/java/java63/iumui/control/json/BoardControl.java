@@ -1,6 +1,7 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
+
 import java63.iumui.domain.Board;
 import java63.iumui.domain.BoardComment;
 import java63.iumui.domain.Member;
@@ -74,6 +75,22 @@ public class BoardControl {
     
     return resultMap;
   }
+  
+	@RequestMapping("/recommendgroups")
+	public Object getRecommendGroups ( 
+			HttpSession session,
+			@RequestParam(defaultValue="1") int startIndex) throws Exception {
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int mno = loginUser.getMemberNo();
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("recgroups", boardService.getRcommendGroups(mno , startIndex));
+		
+		return resultMap;
+	}
   
   @RequestMapping(value="/add", method=RequestMethod.POST)
   public Object add(
