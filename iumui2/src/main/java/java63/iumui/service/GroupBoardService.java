@@ -22,14 +22,19 @@ public class GroupBoardService {
   @Transactional(
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)
-  public List<?> getList(int groupNo) {
+  public List<?> getList(int groupNo, int memberNo) {
+    HashMap<String,Object> paramMap = new HashMap<>();
     
-    return groupBoardDao.selectList(groupNo);
+    paramMap.put("groupNo", groupNo);
+    paramMap.put("memberNo", memberNo);
+    return groupBoardDao.selectList(paramMap);
   }
   
-  public List<?> getComments(int groupNo) {
-    
-    return groupBoardDao.selectComments(groupNo);
+  public List<?> getComments(int groupNo, int memberNo) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("groupNo", groupNo);
+    paramMap.put("memberNo", memberNo);
+    return groupBoardDao.selectComments(paramMap);
   }
   
   @Transactional(

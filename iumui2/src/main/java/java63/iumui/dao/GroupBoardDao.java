@@ -8,8 +8,8 @@ import java63.iumui.domain.GroupBoardComment;
 
 public interface GroupBoardDao {
   
-  List<?> selectList(int no);
-  List<?> selectComments(int no);
+  List<?> selectList(Map<String,Object>paramMap);
+  List<?> selectComments(Map<String,Object>paramMap);
   int selectGroupMemberNo(Map<String,Object>paramMap);
   void insertGroupBoard(GroupBoard groupBoard);
   void insertGroupBoardComment(GroupBoardComment groupBoardComment);

@@ -27,8 +27,15 @@ $(function(){
 	loadSideMenu(); 
 	
 	gno = getUrlParameter("gno");
+	if (!gno) {
+		gno = 0;
+		console.log("===================" + gno)
+		console.log("[" + gno + "]");
+		$('#board_upload').css('display', 'none');
+	} else {
+		$('#board_upload').css('display', '');
+	}
 	
-	loadGroupBoard();
 	
 	$.getJSON('../group/group.do?gno=' + gno , 
 			function(data){
@@ -38,6 +45,9 @@ $(function(){
 		/**사이드 1번 테이블 제목 삽입 end*/
 		
 	});
+	
+	loadGroupBoard();
+	
 	
 	$(document).on('click', '.btnCReg', function(){
 
