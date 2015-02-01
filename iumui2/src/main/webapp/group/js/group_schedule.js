@@ -66,7 +66,7 @@ function parseSchedules(schedules) {
 }
 
 function loadThisGroupSchedules(){
-$.getJSON('..//json/member/thisgroupschedule.do?gno=' + gno, function(data) {
+$.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
   	
 	  var schedules = data.schedules;
 	  var events = parseSchedules(schedules);
