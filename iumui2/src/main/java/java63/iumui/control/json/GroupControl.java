@@ -1,6 +1,7 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
+
 import java63.iumui.domain.Group;
 import java63.iumui.domain.GroupMember;
 import java63.iumui.domain.Member;
@@ -66,6 +67,37 @@ public class GroupControl {
 
 		resultMap.put("status","success");
 		resultMap.put("groups", groupService.getAllGroups(mno));
+		
+		return resultMap;
+	}
+	
+	@RequestMapping("/recommendgroups")
+	public Object getRecommendGroups ( 
+			HttpSession session ) throws Exception {
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int mno = loginUser.getMemberNo();
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("recgroups", groupService.getRcommendGroups(mno));
+		
+		return resultMap;
+	}
+	
+	@RequestMapping("/myschedules")
+	public Object getUserSchedules ( 
+			HttpSession session, 
+			int dataSize) throws Exception {
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		int mno = loginUser.getMemberNo();
+		
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		resultMap.put("schedules", groupService.getUserSchedules(mno, dataSize));
 		
 		return resultMap;
 	}

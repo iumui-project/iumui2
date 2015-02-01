@@ -64,6 +64,11 @@ public class GroupService {
   	return groupDao.selectMyGroup(paramMap);
   }
   
+  public List<?> getRcommendGroups (int mno) {
+  	
+  	return groupDao.selectRecommendedGroup(mno);
+  }
+  
   @Transactional(
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)

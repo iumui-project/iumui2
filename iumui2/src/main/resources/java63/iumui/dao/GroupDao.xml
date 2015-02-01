@@ -82,6 +82,12 @@
  		  ORDER BY RNUM ASC
   </select>
   
+  <select id="selectRecommendedGroup" parameterType="int">
+  	SELECT T1.bmno, T1.bno, T1.bname, T1.lcode FROM iboard T1, members T2
+		WHERE T2.mno = #{mno} AND T1.lcode = T2.lcode
+		ORDER BY DBMS_RANDOM.RANDOM
+  </select>
+  
   <select id="selectUserSchedules" parameterType="map" resultMap="userSchedules">
 		 SELECT ROWNUM rnum, startday, endday, cschedule, color
   			FROM   
