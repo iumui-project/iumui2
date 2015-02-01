@@ -122,7 +122,7 @@ public class GroupControl {
 	@RequestMapping("/group")
 	public Object loadGroupPage ( 
 			HttpSession session,
-			int gno ) throws Exception {
+			@RequestParam(defaultValue="0") int gno ) throws Exception {
 		
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		int mno = loginUser.getMemberNo();
