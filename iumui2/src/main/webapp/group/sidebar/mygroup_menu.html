@@ -19,6 +19,9 @@ if (gno == 0) {
   $('#m1 a ').html("&rtrif; 뉴스피드");
   $('#m3 a ').html("&rtrif; 모든일정");
   $('#a_mn').remove();
+  
+  $('title').html("IUMUI - 모든 그룹 보기");
+  
  } else {
   $('#sidebar_contents1 a').html("메뉴");
   $('#m1 a ').html("&rtrif; 뉴스피드");
@@ -26,7 +29,7 @@ if (gno == 0) {
  	$('#m4 a ').html("&rtrif; 구 성 원");
   $.getJSON('../group/group.do?gno=' + gno, function(data) {
 
-	  //$('title').html("IUMUI - " + data.group[0].name);
+	  $('title').html("IUMUI - " + data.group[0].name);
 
 	  /**사이드 1번 테이블 제목 삽입 start*/
 	  $('#sidebar_contents1 a').html(data.group[0].name);
