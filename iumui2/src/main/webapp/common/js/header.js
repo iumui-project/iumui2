@@ -10,6 +10,25 @@
 //var logintester;
 
 $(function(){
+  
+//최초 쿠키에 login_id라는 쿠키값이 존재하면
+  var email = $.cookie('email');
+  if(email != undefined) {
+      //아이디에 쿠키값을 담는다
+      $("#inputId").val(email);
+      //아이디저장 체크박스 체크를 해놓는다
+      $("#save").prop("checked",true);
+  }
+  
+/*  var inputId = $.cookie('inputId');
+  if(inputId != undefined) {
+      //아이디에 쿠키값을 담는다
+      $("#inputId").val(inputId);
+      //아이디저장 체크박스 체크를 해놓는다
+      $("#rememberid").prop("checked",true);
+  }*/
+  
+  
 	$('#my_loginBox').css('display', 'none');
 	$('#msg1').css('display', 'none'); 
 
