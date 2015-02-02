@@ -51,8 +51,8 @@ $(function(){
 	      } 
 	      , 'json'  )
 	    
-	   .fail(function(jqXHR, textStatus, errorThrown){ 
-	     alert(textStatus + ":" + errorThrown);
+	   .fail(function(){ 
+	     alert("다시 시도해 주십시오");
 	   });
 	});
 });
@@ -239,8 +239,8 @@ function updateGroupBoard(sNo) {
       } 
       , 'json'  )
     
-   .fail(function(jqXHR, textStatus, errorThrown){ 
-     alert(textStatus + ":" + errorThrown);
+   .fail(function(){ 
+     alert("다시 시도해 주십시오");
    });
 }
 /*
@@ -369,8 +369,8 @@ $('#uploadbtn').click(function(){
       } 
       , 'json'  )
     
-   .fail(function(jqXHR, textStatus, errorThrown){ 
-     alert(textStatus + ":" + errorThrown);
+   .fail(function(){ 
+     alert("다시 시도해 주십시오");
    });
 });
 
