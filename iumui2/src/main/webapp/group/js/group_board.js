@@ -265,7 +265,7 @@ function loadMyGroups(pageNo) {
 		console.log(myGroups);
 		
 		/**사이드 2번 테이블 제목 삽입 start*/
-		$('#sidebar_contents2 a').attr('href','#').html("나의 모임");
+		$('#sidebar_contents2 a').attr('href','/iumui/group/group_list.html').html("나의 모임");
 		/**사이드 2번 테이블 제목 삽입 end*/
 		
 		if((data.status) == "success"){
