@@ -2,7 +2,6 @@ package java63.iumui.service;
 
 import java.util.HashMap;
 import java.util.List;
-
 import java63.iumui.dao.GroupBoardDao;
 import java63.iumui.domain.GroupBoard;
 import java63.iumui.domain.GroupBoardComment;
@@ -73,8 +72,17 @@ public class GroupBoardService {
       rollbackFor=Exception.class, 
       propagation=Propagation.REQUIRED)
   public void delete(int groupBoardNo) {
+    groupBoardDao.deleteFiles(groupBoardNo);
     groupBoardDao.deleteComments(groupBoardNo);
     groupBoardDao.delete(groupBoardNo);
   }
-
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void deleteGroupBoard(int groupNo) {
+    groupBoardDao.deleteGroupFiles(groupNo);
+    groupBoardDao.deleteGroupComments(groupNo);
+    groupBoardDao.deleteGroupBoard(groupNo);
+  }
 }

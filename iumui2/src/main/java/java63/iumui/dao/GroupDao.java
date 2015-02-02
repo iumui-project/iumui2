@@ -32,4 +32,8 @@ public interface GroupDao {
   void insertGroup(Group group);
   void insertGroupMember(GroupMember groupMember);
   
+  void deleteGroup(int no);
+  void deleteGroupMembers(int no);
+  void deleteSchedules(int no);
+
 }

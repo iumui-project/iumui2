@@ -1,7 +1,6 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
-
 import java63.iumui.domain.GroupBoard;
 import java63.iumui.domain.GroupBoardComment;
 import java63.iumui.domain.Member;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("json.groupBoardControl")
 @RequestMapping("/group_board")
@@ -98,6 +96,15 @@ public class GroupBoardControl {
 	@RequestMapping("/delete")
   public Object delete(int no) throws Exception {
 	  groupBoardService.delete(no);
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    
+    return resultMap;
+  }
+	
+	@RequestMapping("/delete_group_board")
+  public Object delete_group_board(int no) throws Exception {
+    groupBoardService.deleteGroupBoard(no);
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     
