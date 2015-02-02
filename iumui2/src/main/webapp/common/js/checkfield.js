@@ -11,8 +11,6 @@ var re_tel = /^[0-9]{8,11}$/; // 전화번호 검사식
 
 $(function(){
   loadLocalList();
-  
-  
 });//ready()
 
 //지역 검색

@@ -13,6 +13,7 @@ var no;
 var afterBirth;
 
 $(function(){
+  /*$('.header').load('/iumui/common/header.html');*/
   
   loadLocalList();
   loadUserList();
@@ -105,15 +106,27 @@ $('input[name=gender]:radio').click(function(event){
    });
    
    //수정완료 버튼
-   $('#signInBtn1').click(function(){
-     if(confirm("수정하시겠습니까?")){
+   function button_event(){
+     if (confirm("수정하시겠습니까?") == true){    //확인
+       console.log("성공");
+       updateMember(no);
+     }else{   //취소
+       console.log("취소");
+         return;
+     }
+     }
+   
+   /*$('#signInBtn1').click(function(){
+     if(confirm("수정하시겠습니까?") == true){
+       console.log("응");
      updateMember(no);
      }else{
-       console.log("ㅇㅇ");
+       console.log("취소");
+       return;
        
      }
      
-   });
+   });*/
        
    function updateMember() {
      console.log($('#userfile').val());
@@ -144,7 +157,7 @@ $('input[name=gender]:radio').click(function(event){
          , function(result){
            if (result.status == "success") {
              alert("변경 성공! 메인페이지로 이동합니다.");
-             //location.href="/iumui/index.html";
+             location.href="/iumui/index.html";
              
            } else {
              alert("변경 실패!");
