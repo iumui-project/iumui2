@@ -126,18 +126,18 @@
   </select>
   
   <resultMap type="map" id="recboardMap">
-    <result column="bmno" property="categoryNo"/>
+    <result column="bcategory" property="category"/>
     <result column="bno" property="boardNo"/>
     <result column="bname" property="boardTitle"/>
     <result column="lcode" property="district"/>
   </resultMap>
   
   <select id="selectRecommendedGroup" parameterType="map" resultMap="recboardMap">
-  	SELECT * FROM (SELECT T1.bmno, T1.bno, T1.bname, T1.lcode 
-										FROM iboard T1, members T2
-										WHERE T2.mno = #{mno} AND T1.lcode = T2.lcode
-										ORDER BY DBMS_RANDOM.RANDOM)
-		WHERE ROWNUM BETWEEN #{startIndex} AND #{startIndex}+5 
+		SELECT * 
+ 			 FROM(SELECT T3.BCATEGORY, T1.BNO BNO, T1.BNAME, T1.LCODE, T2.RCOUNT
+      	  FROM IBOARD T1, (SELECT BNO, COUNT(BNO) RCOUNT FROM RECOMMEND GROUP BY BNO) T2, BMASTER T3 ,MEMBERS T4
+      	  WHERE T1.BNO = T2.BNO AND T3.BMNO = T1.BMNO AND T4.LCODE = T1.LCODE AND T4.MNO = #{mno})
+		WHERE ROWNUM BETWEEN #{startIndex} AND #{startIndex}+5;
   </select>
   
   <resultMap type="BoardRequest" id="boardRequestMap">
