@@ -151,8 +151,8 @@ $('input[name=gender]:radio').click(function(event){
            }
          } 
          , 'json')
-      .fail(function(jqXHR, textStatus, errorThrown){ 
-        alert(textStatus + ":" + errorThrown);
+      .fail(function(){ 
+        alert("전송 실패 다시 시도해 주십시오");
       });
    }
    
