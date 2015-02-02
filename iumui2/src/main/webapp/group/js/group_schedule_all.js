@@ -7,66 +7,22 @@
 var groupSchedules;
 var gno = getUrlParameter("gno");
 var startday;
-var schedules;
-var groupColor
 
 /** 화면출력 start */
-$(function(){ 
+$(function(){
 	$('.header').load('/iumui/common/header.html');
 	$('.footer').load('/iumui/common/footer.html');
 	$('#sidebar_table1_content').load('sidebar/mygroup_menu.html');
 
 	loadMyGroups4ThisPage(1);
-	loadSchedules(3);
-	
-	//test2
-	$('#calendar').fullCalendar({
-	  langs : 'ko', //언어설정
-	  header : {
-	    right : 'prev,next today',
-	    center : 'title',
-	    left : 'month,basicWeek'
-	  },//달력 헤더 옵션 설정
-
-	  dayClick : function(date, jsEvent, view) {
-	  	startday = date;
-	    $('#tdate').text(date.format());
-	    popup(date, jsEvent, view);
-	  },//날짜 클릭 콜백함수
-	  
-	  eventClick: function(calEvent, jsEvent, view) {
-	  	var thisEvent = calEvent.title;
-	  	console.log(thisEvent);
-	  	var start = calEvent.start.format();
-	  	
-	  	if (end != null){
-	  		var end = calEvent.end.format()
-	  		$('#schdate').text(start + " ~ " + end);
-	  	} else {
-	  		$('#schdate').text(start);
-	  	}
-	  	
-	  	$('#groupBubble').css('border',"2px solid " + groupColor);
-	  	
-	  	$('#eschedule').text(thisEvent);
-			schBubble(calEvent, jsEvent, view);
-	    
-			},
-			
-	  eventSources : [
-	      {
-			    events : schedules
-			  ,
-			  				 color : groupColor,
-			  				 textColor: 'yellow'
-	      }
-					 ]
-	});
 	
 });
 /** 화면출력 end */
 
 $(document).ready(function() {
+	
+	loadThisGroupSchedules();
+	
   $( "#newSchBtn" ).click(function() {
   	var end = $('#tenddate').val();
   	var title = $('#tschedule').val();
@@ -109,61 +65,90 @@ function parseSchedules(schedules) {
   return schedules;
 }
 
-//function loadGroupSchedules(gno){
-//$.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
-//  	
-//	  var schedules = data.schedules;
-//	  var events = parseSchedules(schedules);
-//	  var groupColor = "#222222";
-//	  
-//	  if(schedules.length > 0){
-//	  	groupColor = schedules[0].formColor;
-//	  }
-//	  
-//	  $('#calendar').fullCalendar({
-//	    langs : 'ko', //언어설정
-//	    header : {
-//	      right : 'prev,next today',
-//	      center : 'title',
-//	      left : 'month,basicWeek'
-//	    },//달력 헤더 옵션 설정
-//
-//	    dayClick : function(date, jsEvent, view) {
-//	    	startday = date;
-//		    $('#tdate').text(date.format());
-//		    popup(date, jsEvent, view);
-//	    },//날짜 클릭 콜백함수
-//	    
-//	    eventClick: function(calEvent, jsEvent, view) {
-//	    	var thisEvent = calEvent.title;
-//	    	console.log(thisEvent);
-//	    	var start = calEvent.start.format();
-//	    	
-//	    	if (end != null){
-//	    		var end = calEvent.end.format()
-//	    		$('#schdate').text(start + " ~ " + end);
-//	    	} else {
-//	    		$('#schdate').text(start);
-//	    	}
-//	    	
-//	    	$('#groupBubble').css('border',"2px solid " + groupColor);
-//	    	
-//	    	$('#eschedule').text(thisEvent);
-//				schBubble(calEvent, jsEvent, view);
-//        
-//   		},
-//   		
-//	    eventSources : [
-//	        {
-//				    events : schedules
-//				  ,
-//				  				 color : groupColor,
-//				  				 textColor: 'yellow'
-//	        }
-//	  				 ]
-//	  });
-//  });//getJSON을 통해 현재 그룹의 스케쥴을 database에서 불러옵니다.
-//}//loadThisGroupSchedules()
+function loadThisGroupSchedules(){
+$.getJSON('../groupschedule/allgroupschedule.do?', function(data) {
+	  var schedules = data.schedules;
+	  var events = parseSchedules(schedules);
+	  var groupColor = "#222222";
+	  
+	  var testevent1 = [events[0],events[1]];
+	  var testevent2 = [events[2],events[3]];
+	  
+	  console.log(testevent1);
+	  console.log(testevent2);
+	  
+	  if(schedules.length > 0){
+	  	groupColor = schedules[0].formColor;
+	  }
+	  
+	  $('#calendar').fullCalendar({
+	    langs : 'ko', //언어설정
+	    header : {
+	      right : 'prev,next today',
+	      center : 'title',
+	      left : 'month,basicWeek'
+	    },//달력 헤더 옵션 설정
+
+	    dayClick : function(date, jsEvent, view) {
+	    	startday = date;
+		    $('#tdate').text(date.format());
+		    popup(date, jsEvent, view);
+	    },//날짜 클릭 콜백함수
+	    
+	    eventClick: function(calEvent, jsEvent, view) {
+	    	var thisEvent = calEvent.title;
+	    	console.log(thisEvent);
+	    	var start = calEvent.start.format();
+	    	
+	    	if (end != null){
+	    		var end = calEvent.end.format()
+	    		$('#schdate').text(start + " ~ " + end);
+	    	} else {
+	    		$('#schdate').text(start);
+	    	}
+	    	
+	    	$('#groupBubble').css('border',"2px solid " + groupColor);
+	    	
+	    	$('#eschedule').text(thisEvent);
+				schBubble(calEvent, jsEvent, view);
+        
+   		},
+   		
+	    eventSources : [
+	        {
+				    events : testevent1
+				  ,
+				  				 color : "red",
+				  				 textColor: 'yellow'
+	        },
+	        {
+				    events : testevent2
+				  ,
+				  				 color : "black",
+				  				 textColor: 'yellow'
+	        },
+	        {
+				    events : testevent1
+				  ,
+				  				 color : "blue",
+				  				 textColor: 'yellow'
+	        },
+	        {
+				    events : testevent2
+				  ,
+				  				 color : "purple",
+				  				 textColor: 'yellow'
+	        },
+	        {
+			    events : testevent2
+				  ,
+				  				 color : "green",
+				  				 textColor: 'yellow'
+	        }
+	        	]	  				 
+	  });
+  });//getJSON을 통해 현재 그룹의 스케쥴을 database에서 불러옵니다.
+}//loadThisGroupSchedules()
 
 function popup(date, jsEvent, view) {
   if ($('#popup').css('display') == 'none' && $('#groupBubble').css('display') == 'none') {
@@ -281,22 +266,3 @@ function yyyyMMdd(date) {
 	}
 }
 /** 날짜 데이터 전환 end */
-
-
-/**실험 */
-
-
-function loadSchedules(gno){
-	$.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
-	  	
-		  schedules = data.schedules;
-		  var events = parseSchedules(schedules);
-		  groupColor = "#222222";
-		  
-		  if(schedules.length > 0){
-		  	groupColor = schedules[0].formColor;
-		  }
-		  
-	  });//getJSON을 통해 현재 그룹의 스케쥴을 database에서 불러옵니다.
-	}//loadThisGroupSchedules()
-
