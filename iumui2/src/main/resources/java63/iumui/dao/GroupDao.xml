@@ -137,6 +137,18 @@
     INSERT INTO gmembers 
     VALUES (grouping_no.nextval, #{groupNo},#{memberNo},#{managerStatus}, null)
   </insert>
-
+  
+  <delete id="deleteGroup" parameterType="int">
+    delete from ggroup where gno=#{no}
+  </delete>
+  
+  <delete id="deleteGroupMembers" parameterType="int">
+    delete from gmembers where gno=#{no}
+  </delete>
+  
+  <delete id="deleteSchedules" parameterType="int">
+    delete from gschedule where gno=#{no}
+  </delete>
+  
 </mapper>
 

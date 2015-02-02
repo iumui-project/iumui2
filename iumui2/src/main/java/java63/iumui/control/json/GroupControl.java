@@ -159,4 +159,14 @@ public class GroupControl {
     
     return resultMap;
   }
+	
+	@RequestMapping("/delete_group")
+	public Object delete_group(int no) throws Exception {
+	  groupService.deleteGroup(no);
+	  
+	  HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    
+    return resultMap;
+  }
 }

@@ -105,4 +105,12 @@ public class GroupService {
     groupDao.insertGroupMember(groupMember); 
   }
   
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void deleteGroup(int groupNo) {
+    groupDao.deleteGroupMembers(groupNo);
+    groupDao.deleteSchedules(groupNo);
+    groupDao.deleteGroup(groupNo);
+  }
 }

@@ -14,9 +14,15 @@ public interface GroupBoardDao {
   void insertGroupBoard(GroupBoard groupBoard);
   void insertGroupBoardComment(GroupBoardComment groupBoardComment);
   void updateGroupBoard(GroupBoard groupBoard);
+  void deleteFiles(int no);
   void deleteComments(int no);
   void delete(int no);
+  void deleteGroupBoard(int no);
+  void deleteGroupFiles(int no);
+  void deleteGroupComments(int no);
+  
   /*
+    
   List<?> selectAllList();
   List<?> selectList(Map<String,Object>paramMap);
   

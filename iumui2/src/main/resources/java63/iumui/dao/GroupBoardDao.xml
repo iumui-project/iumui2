@@ -91,6 +91,31 @@
     delete from gcomment where gbno=#{no}
   </delete>
   
+  <delete id="deleteFiles" parameterType="int">
+    delete from gfile where gbno=#{no}
+  </delete>
+  
+  
+  <delete id="deleteGroupBoard" parameterType="int">
+    delete from gboard 
+    where grouping_no in 
+        (select grouping_no from gmembers where gno=#{no})
+  </delete>
+  
+  <delete id="deleteGroupComments" parameterType="int">
+    delete from gcomment 
+    where gbno in 
+        (select gbno from gboard where grouping_no in 
+            (select grouping_no from gmembers where gno=#{no}))
+  </delete>
+  
+  <delete id="deleteGroupFiles" parameterType="int">
+    delete from gfile 
+    where gbno in 
+        (select gbno from gboard where grouping_no in 
+            (select grouping_no from gmembers where gno=#{no}))
+  </delete>
+  
   <!-- 
   <insert id="insertComment" parameterType="BoardComment">
     INSERT INTO bcomment 
