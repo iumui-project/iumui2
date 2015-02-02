@@ -71,15 +71,13 @@ $.getJSON('../groupschedule/allgroupschedule.do?', function(data) {
 	  var events = parseSchedules(schedules);
 	  var groupColor = "#222222";
 	  
-	  var testevent1 = [events[0],events[1]];
-	  var testevent2 = [events[2],events[3]];
+	  var eventSet = [];
 	  
-	  console.log(testevent1);
-	  console.log(testevent2);
-	  
-	  if(schedules.length > 0){
-	  	groupColor = schedules[0].formColor;
-	  }
+  	for (var i in events) {
+  		eventSet.push(events[i]);
+  	}
+  	
+  	console.log(eventSet);
 	  
 	  $('#calendar').fullCalendar({
 	    langs : 'ko', //언어설정
@@ -88,12 +86,6 @@ $.getJSON('../groupschedule/allgroupschedule.do?', function(data) {
 	      center : 'title',
 	      left : 'month,basicWeek'
 	    },//달력 헤더 옵션 설정
-
-	    dayClick : function(date, jsEvent, view) {
-	    	startday = date;
-		    $('#tdate').text(date.format());
-		    popup(date, jsEvent, view);
-	    },//날짜 클릭 콜백함수
 	    
 	    eventClick: function(calEvent, jsEvent, view) {
 	    	var thisEvent = calEvent.title;
@@ -114,38 +106,7 @@ $.getJSON('../groupschedule/allgroupschedule.do?', function(data) {
         
    		},
    		
-	    eventSources : [
-	        {
-				    events : testevent1
-				  ,
-				  				 color : "red",
-				  				 textColor: 'yellow'
-	        },
-	        {
-				    events : testevent2
-				  ,
-				  				 color : "black",
-				  				 textColor: 'yellow'
-	        },
-	        {
-				    events : testevent1
-				  ,
-				  				 color : "blue",
-				  				 textColor: 'yellow'
-	        },
-	        {
-				    events : testevent2
-				  ,
-				  				 color : "purple",
-				  				 textColor: 'yellow'
-	        },
-	        {
-			    events : testevent2
-				  ,
-				  				 color : "green",
-				  				 textColor: 'yellow'
-	        }
-	        	]	  				 
+	    eventSources : [ eventSet ]	  				 
 	  });
   });//getJSON을 통해 현재 그룹의 스케쥴을 database에서 불러옵니다.
 }//loadThisGroupSchedules()

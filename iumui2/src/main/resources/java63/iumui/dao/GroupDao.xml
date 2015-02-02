@@ -49,6 +49,14 @@
   	<result column="color" property="formColor"/>
   </resultMap>
   
+  <resultMap type="map" id="groupAllSchedules">
+  	<id column="gno" property="gno"/>
+  	<result column="startday" property="start"/>
+  	<result column="endday" property="end"/>
+  	<result column="cschedule" property="title"/>
+  	<result column="color" property="color"/>
+  </resultMap>
+  
   <select id="totalSize" parameterType="int" resultType="int">
   	SELECT count(T2.GNO)
 			FROM MEMBERS T1, GMEMBERS T2, GGROUP T3
@@ -109,12 +117,12 @@
 		  	ORDER BY startday ASC
   </select>
   
-  <select id="selectAllGroupSchedules" parameterType="int" resultMap="groupSchedules">
+  <select id="selectAllGroupSchedules" parameterType="int" resultMap="groupAllSchedules">
 		 SELECT *
   			FROM 
   				(SELECT T1.startday startday, T1.endday endday, T1.cschedule cschedule, T2.color color
     				FROM GSCHEDULE T1, GMEMBERS T2, GGROUP T3
-	  				WHERE T2.MNO = 5 AND T2.GNO = T3.GNO AND T3.GNO = T1.GNO)
+	  				WHERE T2.MNO = #{mno} AND T2.GNO = T3.GNO AND T3.GNO = T1.GNO)
 		  	ORDER BY startday ASC
   </select>
   
