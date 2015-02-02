@@ -66,14 +66,10 @@ $.getJSON('../json/auth/loginUser.do', function(data){
 		if (data.loginUser.userPhoto) {
       $('#myphoto').attr('src', '/iumui/fileupload/' + data.loginUser.userPhoto);
   }
-		console.log("로그인 유저 이름 (logintester): " + data.loginUser.userName);
+		//console.log("로그인 유저 이름 (logintester): " + data.loginUser.userName);
 		
 	  $('.myName').html(data.loginUser.userName + " 님.");
 
-		$('.myName').click(function(){
-			alert('사용자 정보 조회 창으로 보낼 예정');
-		});
-		
 		$.getJSON('../json/board/message_count.do', 
 		    function(result){
 			//console.log(result);
