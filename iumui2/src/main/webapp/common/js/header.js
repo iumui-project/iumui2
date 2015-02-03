@@ -9,7 +9,7 @@
  */
 //var logintester;
   // 쿠키 가져오기
-$(function(){
+$(function(){ 
 //쿠키값 가져오기
   Cookie[] cookies = request.getCookies();
   
