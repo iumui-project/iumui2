@@ -23,7 +23,7 @@ $(function(){
     $("#save").attr("checked", "checked");    // 체크박스에 체크
 
       }
-    
+     
   }*/
   
   
