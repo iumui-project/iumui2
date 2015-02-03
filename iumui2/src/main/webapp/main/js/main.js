@@ -5,6 +5,8 @@
 
 /** 화면출력 start */
 $(function(){
+
+  
 	$('.header').load('../common/header.html');
 	$('.footer').load('../common/footer.html');
 	$('.sidebar').load('../common/sidebar.html');
@@ -12,6 +14,8 @@ $(function(){
 	loadBoardAllList();
 	loadRecGroups();//main_sidebar_table1
 	loadMyGroups(1);//main_sidebar_table2
+	
+	
 
 	$(document).on('click', '.tableHead a', function(){
     loadProduct($(this).attr('category-no'));
