@@ -9,39 +9,34 @@
  */
 //var logintester;
   // 쿠키 가져오기
-$(function(){ 
-//쿠키값 가져오기
-  Cookie[] cookies = request.getCookies();
+$(function(){
+  alert(document.cookie);
+  console.log("쿠키값:"+ document.cookie);
+  var cookieId = (document.cookie).split('"');
+  console.log(cookieId[1]);
   
-  if(cookies != null){
+  /*console.log(document.cookie);
+  
+  if(document.cookie != null){
+    $("#inputId").val(document.cookie);          // email textbox에 쿠키값 출력
+
+    $("#save").attr("checked", "checked");    // 체크박스에 체크
+
+      }
     
-    for(int i=0; i < cookies.length; i++){
-        Cookie c = cookies[i] ;
-         
-        // 저장된 쿠키 이름을 가져온다
-        String cName = c.getName();
-         
-        // 쿠키값을 가져온다
-        String cValue = c.getValue() ;
-         
-         
-        console.log("쿠키이름:"+ cName);
-        console.log("쿠키값:"+ cValue);
-    }
-}
+  }*/
+  
+  
+ 
   
   
 });
+
+
+
      
   
-//최초 쿠키에 login_id라는 쿠키값이 존재하면
-/*  var inputId = $.cookie('inputId');
-  if(inputId != undefined) {
-      //아이디에 쿠키값을 담는다
-      $("#inputId").val(inputId);
-      //아이디저장 체크박스 체크를 해놓는다
-      $("#rememberid").prop("checked",true);
-  }*/
+
 	$('#my_loginBox').css('display', 'none');
 	$('#msg1').css('display', 'none'); 
 

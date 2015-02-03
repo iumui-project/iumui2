@@ -5,7 +5,6 @@
 
 /** 화면출력 start */
 $(function(){
-
   
 	$('.header').load('../common/header.html');
 	$('.footer').load('../common/footer.html');
