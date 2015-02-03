@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>IUMUI_회원정보변경</title>
 <link rel='stylesheet' href='/iumui/common/css/header.css'>
-<link rel='stylesheet' href='../css/bootstrap.css'>
-<link rel='stylesheet' href='../css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='../common/css/common.css'>
 <script src='/iumui/js/jquery-1.11.1.js'></script>
 </head>
@@ -27,6 +25,10 @@ label {
   border-color: #2E6DA4;
 }
 
+.inputRow {
+  width : 50px;
+  display : inline;
+}
 
 #conTitle {
   margin-left: 300px;
@@ -54,11 +56,12 @@ label {
 }
 
 #sign_form input {
-  margin-left: 5px;
+  margin-left: 108px;
+  margin-top: -46px;
   border: 0px;
   font-size: x-large;
   height : 50px;
-  width: 320px;
+  width: 390px;
 }
 
 #sexDiv {
@@ -102,25 +105,47 @@ label {
   display: block;
 }
 
+.inputBox{
+margin-top: 100px;
+
+ 
+}
+
 #signInBtn1, #signInBtn2 {
   width: 246px;
   height: 50px;
   font-size: x-large;
-  background-color: #999;
+  background-color: #44619D;
+  color: black;
 }
 
 #blah{
-width: 100px;
-height: 100px;
-border: 1px solid red;
+width: 130px;
+height: 130px;
+border: 1px solid gray;
+margin-top: 100px;
 }
 
-/* #sex{
+#fileUpload{
    width: 50px;
-   height: 50px;
-   border: 1px solid red; 
+   height: 20px;
+   border: 0px solid red;
+   margin-left: 50px;
    
-} */
+} 
+
+#userfile{
+margin-top: 5px;
+}
+
+#uploadbutton{
+margin-top: 10px;
+}
+
+#logoutSubmit {
+padding-top: 0px;
+padding-right: 5px;
+}
 
 </style>
 <body>
@@ -211,107 +236,74 @@ border: 1px solid red;
         <div id='conTitle'>
           <h2>정보 수정</h2>
         </div>
-        <hr>
         <div class='sign_form'>
-     <!--프로필  -->
-      <!-- <form id="ajaxform" action="../json/member/test.do" method="post"
-        enctype="multipart/form-data">
-        <input type="file" id="userfile" name="userPhotofile"
-          onchange="readURL(this);" />
-         <img id="blah" src=""
-          alt="이미지를 올려주세요" />
-         <input type="submit" id="uploadbutton" value="등록" />
-      </form> -->
+    
+      <div id="fileUpload">
       
       <form id="ajaxform1" action="../json/member/test.do" method="post"
         enctype="multipart/form-data">
-        <input type="file" id="userfile" name="userPhotofile"
-          onchange="readURL(this);" />
          <img id="blah" src=""
           alt="이미지를 올려주세요" />
+        <input type="file" id="userfile" name="userPhotofile"
+          onchange="readURL(this);" />
          <input type="submit" id="uploadbutton" value="사진등록" />
       </form>
+      
+      </div>
 
 
       <form id='sign_form' action="">
           
             <div class='row_group'>
               <div id='emailDiv' class="sign_row">
-             <span>이메일</span> 
-              <span class="insert_box">
-                  <input type="text" id="email" placeholder="이메일 (아이디로 사용합니다.)">
-                  <span class="email_confirm"></span>
-                </span>
+              
+              <div class="inputRow">이메일</div>
+                  <input class="inputBox" type="text" id="email" placeholder="이메일 (아이디로 사용합니다.)"
+                  style="position: absolute; margin-top:0px; margin-left:62px;">
+                  <div class="email_confirm"></div>
               </div>
-              <hr>
+              
+              
               <div id='emailDiv' class="sign_row">
-              <span>이름</span>
-                <span class="insert_box">
-                  <input type="text" id="name" placeholder="이름">
-                  <span class="email_confirm"></span>
-                </span>
+              <div class="inputRow">이름</div>
+                  <input class="inputBox" type="text" id="name" placeholder="이름"
+                  style ="position: absolute; margin-top: 0px; margin-left: 77px;">
+                  <div class="email_confirm"></div>
               </div>              
-              <hr>
               <div id='emailDiv' class="sign_row">
-              <span>닉네임</span>
-                <span class="insert_box">
-                  <input type="text" id="nick" placeholder="닉네임">
-                  <span class="email_confirm"></span>
-                </span>
+              <div class="inputRow">닉네임</div>
+                  <input class="inputBox" type="text" id="nick" placeholder="닉네임"
+                  style ="position: absolute; margin-top: 0px; margin-left: 62px;">
+                  <div class="email_confirm"></div>
               </div>              
-              <hr>
               <div id='emailDiv' class="sign_row">
-             <span>연락처</span>
-                <span class="insert_box">
-                  <input type="text" id="pnoneNo" placeholder="핸드폰번호">
-                  <span class="email_confirm"></span>
-                </span>
-              </div>              
-              <hr>
+             <div class="inputRow">연락처</div>
+                  <input class="inputBox" type="text" id="pnoneNo" placeholder="핸드폰번호"
+                  style ="position: absolute; margin-top: 0px; margin-left: 62px;">
+                  <div class="email_confirm"></div>
+              </div>     
+                       
               <div id='emailDiv' class="sign_row">
-              <span>자기소개</span>
-                <span class="insert_box">
-                  <input type="text" id="myself" placeholder="인사말을 입력해주세요">
-                  <span class="email_confirm"></span>
-                </span>
-              </div>              
-              <hr>
+              <div class="inputRow">자기소개</div>
+                  <input class="inputBox" type="text" id="myself" placeholder="인사말을 입력해주세요"
+                  style ="position: absolute; margin-top: 0px; margin-left: 47px;">
+                  <div class="email_confirm"></div>
+              </div>
+                            
               <div id='emailDiv' class="sign_row">
-              <span>생년월일</span> 
-                <span class="insert_box">
-                  <input type="text" id="birth" placeholder="생년월일">
-                  <span class="email_confirm"></span>
-                </span>
+              <div class="inputRow">생년월일</div> 
+                  <input class="inputBox" type="text" id="birth" placeholder="생년월일"
+                  style ="position: absolute; margin-top: 0px; margin-left: 47px;">
+                  <div class="email_confirm"></div>
               </div>              
-              <hr>
+                        
               <div id='emailDiv' class="sign_row">
-              <span>성별</span>
-                <span id="sex1" class="insert_box">
-                  <input type="text" id="sex" placeholder="성별">
-                </span>
-                <span>
-                  <input type="radio"  style="width:25px;height:25px;border:1px;" name="gender" value="1">남자
-                  <input type="radio"  style="width:25px;height:25px;border:1px;" name="gender" value="2">여자
-                  </span>
+              <div class="inputRow">사는 지역</div>
+                  <input class="inputBox" type="text" id="zone" placeholder="지역"
+                  style ="position: absolute; margin-top: 0px; margin-left: 42px;">
+                  <div class="email_confirm"></div>
               </div>              
-              <hr>
-              <div id='emailDiv' class="sign_row">
-              <span>사는 지역</span>
-                <span class="insert_box">
-                  <input type="text" id="zone" placeholder="지역">
-                  <!-- <button id="local1" >change</button> -->
-                  <span class="email_confirm"></span>
-                </span>
-              </div>              
-              <hr>
-              <div id='emailDiv' class="sign_row">
-              <span>내사진</span>
-                <span class="insert_box">
-                  <input type="text" id="myphoto" placeholder="내사진">
-                  <span class="email_confirm"></span>
-                </span>
-              </div>              
-              <hr>
+                         
               
             </div>
             
@@ -330,7 +322,6 @@ border: 1px solid red;
         </div>
       <!-- contents end  -->
       
-    <div class='footer'></div>
   </div>
 </body>
 
