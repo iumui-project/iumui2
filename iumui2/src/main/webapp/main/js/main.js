@@ -43,17 +43,6 @@ function loadRecGroups() {
 		/** 확인용 로그*/
 		
 		var recGroups = data.recgroups;
-
-		for (var i in recGroups) {
-			switch(recGroups[i].categoryNo) {
-				case 1 : recGroups[i].categoryNo = "문화"; break;
-				case 2 : recGroups[i].categoryNo = "건강"; break;
-				case 3 : recGroups[i].categoryNo = "계발"; break;
-				case 4 : recGroups[i].categoryNo = "레저"; break;
-				case 5 : recGroups[i].categoryNo = "미용"; break;
-				case 6 : recGroups[i].categoryNo = "유흥"; break;
-			} 
-		}
 		
 		/**사이드 1번 테이블 제목 삽입 start*/
 		$('#sidebar_contents1 a').html("추천 모임");
@@ -77,7 +66,10 @@ function loadRecGroups() {
 					
 				});
 			} else {
-				$('#sidebar_table1_content').append("추천 그룹이 없습니다");
+				for ( var i=0; i < 6; i++ ) {
+					$('#sidebar_table1_content').append("<tr><td id=\"f" + i + "\" class=\"sidebar_title\"></td></tr>");
+				}
+					$('#f2').html("추천 그룹이 없습니다");
 			}
 		}
 	});
