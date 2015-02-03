@@ -73,8 +73,10 @@ function loadRecGroups() {
 			}
 		}
 	}).error(function() {
+		$('#sidebar_contents1 a').html("추천 모임");
+		
 		for ( var i=0; i < 6; i++ ) {
-			$('#sidebar_table1_content').append("<tr><td id=\"fr" + i + "\" class=\"sidebar_title\"></td></tr>");
+			$('#sidebar_table1_content').append("<tr><td id=\"f" + i + "\" class=\"sidebar_title\"></td></tr>");
 		}
 			$('#f2').html("로그인 후 이용해 주세요");
 	});
@@ -121,11 +123,11 @@ function loadMyGroups(pageNo) {
 				for ( var i=0; i < 6; i++ ) {
 					$('#sidebar_table2_content').append("<tr><td id=\"u" + i + "\" class=\"sidebar_title\"></td></tr>");
 				}
-					$('#u2').html("아직 가입한 그룹이 없습니");
+					$('#u2').html("아직 가입한 그룹이 없습니다.");
 			}
 		}
 	}).error(function() {
-		alert("<IUMUI> \n\n 데이터 수신 에러! 브라우저를 다시 시작해주세요.");
+		alert("<IUMUI> 브라우저를 다시 시작해주세요.");
 	});
 	
 };
