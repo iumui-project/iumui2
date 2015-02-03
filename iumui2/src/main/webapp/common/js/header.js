@@ -8,7 +8,31 @@
  * 2015.1월
  */
 //var logintester;
-
+  // 쿠키 가져오기
+$(function(){
+//쿠키값 가져오기
+  Cookie[] cookies = request.getCookies();
+  
+  if(cookies != null){
+    
+    for(int i=0; i < cookies.length; i++){
+        Cookie c = cookies[i] ;
+         
+        // 저장된 쿠키 이름을 가져온다
+        String cName = c.getName();
+         
+        // 쿠키값을 가져온다
+        String cValue = c.getValue() ;
+         
+         
+        console.log("쿠키이름:"+ cName);
+        console.log("쿠키값:"+ cValue);
+    }
+}
+  
+  
+});
+     
   
 //최초 쿠키에 login_id라는 쿠키값이 존재하면
 /*  var inputId = $.cookie('inputId');
@@ -23,7 +47,14 @@
 	$('#my_loginBox').css('display', 'none');
 	$('#msg1').css('display', 'none'); 
 
+	
 	$('#loginSubmit').click(function(event){
+	  /*** 로그인버튼 클릭시 호출되는 함수부분, 쿠키값 저장, 삭제부분 ***/
+
+
+	  
+
+	  
     $.post('../json/auth/login.do'
         , {
           email : $('#inputId').val(),
@@ -33,6 +64,7 @@
         , function(data){
           if (data.status == 'success') {
             console.log("로그인 성공");
+            
           	location.href = '../main/main.html';
           		
           } else {
