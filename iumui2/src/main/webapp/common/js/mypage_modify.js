@@ -157,7 +157,7 @@ $('input[name=gender]:radio').click(function(event){
          , function(result){
            if (result.status == "success") {
              alert("변경 성공! 메인페이지로 이동합니다.");
-             location.href="/iumui/index.html";
+            // location.href="/iumui/index.html";
              
            } else {
              alert("변경 실패!");
@@ -193,9 +193,10 @@ $('input[name=gender]:radio').click(function(event){
                            },
              success: function(responseText, statusText){
                alert("전송 성공");
-               location.href="/iumui/common/mypage_modify.html";
+               console.log("콘솔창"+responseText);
+               console.log("콘솔창"+statusText);
+              // location.href="/iumui/common/mypage_modify.html";
                
-                 console.log(responseText);
              } ,
              error: function(){
                  alert("에러발생!!");
