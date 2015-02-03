@@ -18,8 +18,6 @@
       //아이디저장 체크박스 체크를 해놓는다
       $("#rememberid").prop("checked",true);
   }*/
-  
-  
 	$('#my_loginBox').css('display', 'none');
 	$('#msg1').css('display', 'none'); 
 
@@ -47,6 +45,8 @@
 	  $.getJSON('../json/auth/logout.do', function(data){
 	  	$('#login').css('display', '');
 			$('#my_loginBox').css('display', 'none');
+			
+			location.href = "/iumui";
 	  });
 	});//로그아웃 버튼
 	
@@ -108,6 +108,14 @@
 	  $('#msg1').css('display', 'none'); 
 	});
 	
+function authValidate(){
+	$.getJSON('../json/auth/loginUser.do', function(data){
+		if(data.status = "fail") {
+			console.log("로그인 후 이용해 주세요!");
+			location.href="/iumui";
+		}
+	});
+}
 
 
 
