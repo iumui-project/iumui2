@@ -8,7 +8,7 @@
 .search_bar {margin:0 40px;}
 #button_create { float: right; margin-top: -2px; }
 
-#category_tab { border-collapse: collapse; border-radius: 5px; float: left;}
+#category_tab { cursor: pointer; collapse; border-radius: 5px; float: left;}
 
 #category_tab td {  padding: 8px 30px; border-top: 1px solid rgba(68, 97, 157, 0.15); border-left: 1px solid rgba(68, 97, 157, 0.15); border-right: 1px solid rgba(68, 97, 157, 0.15);}
 

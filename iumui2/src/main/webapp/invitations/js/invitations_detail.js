@@ -11,7 +11,11 @@ var state;
 $(function(){
 	$('.header').load('/iumui/common/header.html');
 	$('.footer').load('/iumui/common/footer.html');
+	$('.side_bar').load('/iumui/common/sidebar.html');
 	$('.search_bar').load('/iumui/common/search_bar.html');
+	
+	loadRecGroups();//main_sidebar_table1
+	loadMyGroups(1);
 	
 	var address = unescape(location.href);
 	var param = "";
@@ -307,6 +311,113 @@ $(document).on('click', '.btnRReject',function(){
 	} else return;
 });
 
+/** 추천모임 start */
+function loadRecGroups() {
+	$.getJSON('../json/board/recommendgroups.do?startIndex=1', 
+			function(data){
+
+		/** 확인용 로그*/
+		console.log(data);
+		/** 확인용 로그*/
+		
+		var recGroups = data.recgroups;
+		
+		/**사이드 1번 테이블 제목 삽입 start*/
+		$('#sidebar_contents1 a').html("추천 모임");
+		/**사이드 1번 테이블 제목 삽입 end*/
+		
+		if((data.status) == "success"){
+			
+			if(recGroups.length > 0){
+				require(['text!sidebar/side_table1.html'], function(html){
+					var template = Handlebars.compile(html);
+					$('#sidebar_table1_content').append(template(data));
+					console.log("사이드바 1번 테이블 데이터 : " + $('#sidebar_table1_content').find('tr').length);
+					
+					var mgtRow = $('#sidebar_table1_content').find('tr').length;
+				
+					if(mgtRow < 6) {
+						for ( var i=0; i < ( 6 - mgtRow ); i++ ) {
+							$('#sidebar_table1_content').append("<tr><td class=\"sidebar_title\"></td></tr>");
+						}
+					}
+					
+				});
+			} else {
+				for ( var i=0; i < 6; i++ ) {
+					$('#sidebar_table1_content').append("<tr><td id=\"f" + i + "\" class=\"sidebar_title\"></td></tr>");
+				}
+					$('#f2').html("추천 그룹이 없습니다");
+			}
+		}
+	}).error(function() {
+		$('#sidebar_contents1 a').html("추천 모임");
+		
+		for ( var i=0; i < 6; i++ ) {
+			$('#sidebar_table1_content').append("<tr><td id=\"f" + i + "\" class=\"sidebar_title\"></td></tr>");
+		}
+			$('#f2').html("로그인 후 이용해 주세요");
+	});
+	
+};
+/** 추천 모임 end */
+
+/** 나의 모임 start */
+function loadMyGroups(pageNo) {
+
+	$.getJSON('../group/mygroups.do?pageNo='+ pageNo, 
+			function(data){
+
+		/** 확인용 로그*/
+		console.log("나의 모임 페이지 로드 : " + data.status);
+		/** 확인용 로그*/
+
+		var myGroups = data.groups;
+		
+		console.log(myGroups);
+		
+		/**사이드 2번 테이블 제목 삽입 start*/
+		$('#sidebar_contents2 a').attr('href','/iumui/group/group_list.html').html("나의 모임");
+		/**사이드 2번 테이블 제목 삽입 end*/
+		
+		if((data.status) == "success"){
+			
+			if(myGroups.length > 0){
+				require(['text!sidebar/mygroup_list.html'], function(html){
+					var template = Handlebars.compile(html);
+					$('#sidebar_table2_content').append(template(data));
+					console.log("사이드바 2번 테이블 데이터 : " + $('#sidebar_table2_content').find('tr').length);
+					
+					var mgtRow = $('#sidebar_table2_content').find('tr').length;
+				
+					if(mgtRow < 6) {
+					
+						for ( var i=0; i < ( 6 - mgtRow ); i++ ) {
+							$('#sidebar_table2_content').append("<tr><td class=\"sidebar_title\"></td></tr>");
+						}
+						
+					}
+				});
+				// expireDay - nowDate < 0 : Delete groupBoard and Group etc...
+				var nowDate = new Date();
+				for (var i in myGroups ) {
+					console.log("expireDay: " + myGroups[i].expireDay);
+					console.log("nowDate: " + nowDate);
+					console.log("종료 기간 (음수 삭제): " + (myGroups[i].expireDay - nowDate));
+					if ((myGroups[i].expireDay - nowDate) < 0 ) {
+						alert("[" + myGroups[i].gname + "] 모임 기간이 종료되어 모임과 게시판들을 삭제 합니다.")
+						deleteGroupBoard(myGroups[i].gno);
+						
+					}
+				}
+				
+			} else {
+				$('#sidebar_table2_content').append("다른 그룹이 없습니다");
+			}
+		}
+	});
+};
+
 function recommendBoard() {
 	$.getJSON('../json/board/recommend.do?no=' + board.no, 
 	    function(data){
@@ -414,3 +525,4 @@ function yyyyMMdd(date) {
     return '';
   }
 }
+
