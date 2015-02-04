@@ -8,11 +8,16 @@
 //var logintester;
   // 쿠키 가져오기
 $(function(){
-  console.log("쿠키값:"+ document.cookie);
   
+  if((document.cookie) != null && (document.cookie) != ""){
+    var cookieId = (document.cookie).split('"');
+
+    $("#inputId").val(cookieId[1]);          // email textbox에 쿠키값 출력
+
+    $("#save").attr("checked", "checked");    // 체크박스에 체크
+
+      }//end if
   
-  var cookieId = (document.cookie).split('"');
-  console.log(cookieId[1]);
   
 });
   
