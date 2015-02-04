@@ -13,15 +13,23 @@ public class GroupBoardComment implements Serializable{
   protected String groupName;
   protected int memberNo;
   protected String userName;
+  protected String userPhoto;
   protected String content;
   protected Date regDate;
-   
+  
   @Override
   public String toString() {
     return "GroupBoardComment [no=" + no + ", groupBoardNo=" + groupBoardNo
         + ", groupMemberNo=" + groupMemberNo + ", groupNo=" + groupNo
         + ", groupName=" + groupName + ", memberNo=" + memberNo + ", userName="
-        + userName + ", content=" + content + ", regDate=" + regDate + "]";
+        + userName + ", userPhoto=" + userPhoto + ", content=" + content
+        + ", regDate=" + regDate + "]";
+  }
+  public String getUserPhoto() {
+    return userPhoto;
+  }
+  public void setUserPhoto(String userPhoto) {
+    this.userPhoto = userPhoto;
   }
   public int getNo() {
     return no;
