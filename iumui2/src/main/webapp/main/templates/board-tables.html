@@ -1,9 +1,9 @@
  
 {{#each mainDisplay}}
+<div class="main-tableborder">
 <table id='table{{categoryNumber}}' class='main_tables table table-bordered'>
 	<thead>
-  <tr><th class='tableHead'><a href='../invitations/invitations.html?no={{categoryNumber}}' 
-    category-no='{{categoryNumber}}'> {{categoryName}} </a></th></tr>
+  <tr><th class='tableHead'><a href='../invitations/invitations.html?no={{categoryNumber}}' category-no='{{categoryNumber}}'> {{categoryName}} </a></th></tr>
 	</thead>
   <tr><td id='t{{categoryNumber}}t1' class='board_title'>
     <a href='../invitations/invitations_detail.html?no={{boardNo1}}' data-no='{{boardNo1}}'> {{content1}} </a> 
@@ -28,4 +28,5 @@
   </td></tr>
 
 </table>
+</div>
 {{/each}}
