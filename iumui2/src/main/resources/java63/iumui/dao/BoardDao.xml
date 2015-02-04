@@ -147,13 +147,14 @@
     <result column="bno" property="boardNo"/>
     <result column="mno" property="memberNo"/>
     <result column="uname" property="userName"/>
+    <result column="myphoto" property="userPhoto"/>
     <result column="status" property="statusNo"/>
     <result column="req_date" property="requestDate"/>
   </resultMap>
 
   <select id="selectRequests" parameterType="int" 
       resultMap="boardRequestMap">
-    select b.bno bno, r.mno mno, m.uname uname, r.state status, r.call req_date from iboard b, request r, members m
+    select b.bno bno, r.mno mno, m.uname uname, m.myphoto myphoto, r.state status, r.call req_date from iboard b, request r, members m
     where r.bno=b.bno and r.mno=m.mno and r.bno=#{value}
   </select>
   
