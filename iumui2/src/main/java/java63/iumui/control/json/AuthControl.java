@@ -46,7 +46,7 @@ public class AuthControl {
 
     
 
-    if (save) {
+    if (save == true) {
       CookieGenerator cg = new CookieGenerator();
 
       cg.setCookieName("email");

@@ -14,9 +14,14 @@ $(function(){
 
     $("#inputId").val(cookieId[1]);          // email textbox에 쿠키값 출력
 
-    $("#save").attr("checked", "checked");    // 체크박스에 체크
+    $("#save").attr("checked", true);    // 체크박스에 체크
 
-      }//end if
+      }else{
+        var cookieId = document.cookie;
+        $("#inputId").val(""); 
+        $("#save").attr("checked", false);    // 체크박스에 체크
+        
+      }
   
   
 });
@@ -28,6 +33,9 @@ $(function(){
 	
 	$('#loginSubmit').click(function(event){
 	  /*** 로그인버튼 클릭시 호출되는 함수부분, 쿠키값 저장, 삭제부분 ***/
+	  if($('#save').is(':checked') == false){
+	    $("#save").attr("checked", false)
+	  }
 
 
 	  
