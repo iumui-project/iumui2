@@ -55,10 +55,10 @@ $('#grp_state').change(function(){
        
        if(data.check != null){
          $('.email_confirm').css("color", "red");
-         $('.email_confirm').html("사용 불가!"); //해당 내용을 보여준다
+         $('.email_confirm').html("중복 아이디"); //해당 내용을 보여준다
          $('#email').focus();
        }else if(re_mail.test( $('#email').val() ) != true){
-         $('.email_confirm').html("사용 불가!"); //해당 내용을 보여준다
+         $('.email_confirm').html("중복 아이디"); //해당 내용을 보여준다
          $('.email_confirm').css("color", "red");
          $('#email').focus();
        }else if(re_mail.test( $('#email').val() ) == true ){
@@ -93,16 +93,16 @@ $('#grp_state').change(function(){
    });
    
    //이름 가능 여부
-   $('#name').keyup(function(){
-     if(re_name.test($('#name').val() ) != true ){
-       $('.name1').css("color", "red"); //해당 내용을 보여준다
-       $('.name1').html("불가능!"); //해당 내용을 보여준다
-      $('#name').focus();      
-     }else{
-       $('.name1').css("color", "green");
-       $('.name1').html("가능!");             
-     }
-   });
+//   $('#name').keyup(function(){
+//     if(re_name.test($('#name').val() ) != true ){
+//       $('.name1').css("color", "red"); //해당 내용을 보여준다
+//       $('.name1').html("불가능!"); //해당 내용을 보여준다
+//      $('#name').focus();      
+//     }else{
+//       $('.name1').css("color", "green");
+//       $('.name1').html("가능!");             
+//     }
+//   });
    
    //성별 체크   
    $('input[name=sex]:radio').click(function(event){

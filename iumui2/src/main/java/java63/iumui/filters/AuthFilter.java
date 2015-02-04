@@ -1,7 +1,6 @@
 package java63.iumui.filters;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -32,7 +31,6 @@ public class AuthFilter implements Filter {
     HttpServletRequest request = (HttpServletRequest)req;
     HttpServletResponse response = (HttpServletResponse)resp;
 
-    System.out.println("1" + request.getRequestURI());
     System.out.println("2" + request.getServletPath());
     System.out.println("3" + request.getPathTranslated());
     System.out.println("4" + request.getRequestURL());
@@ -48,10 +46,10 @@ public class AuthFilter implements Filter {
       	if (!request.getServletPath().startsWith("/auth") &&
             request.getSession().getAttribute("loginUser") == null) {
           
-          request.getSession().setAttribute("requestUrl", 
-              request.getRequestURL() + "?" + request.getQueryString());
+//          request.getSession().setAttribute("requestUrl", 
+//              request.getRequestURL() + "?" + request.getQueryString());
           
-          request.getSession().setAttribute("IUMUImessage","로그인 후 이용해주십시오");
+          request.getSession().setAttribute("IUMUImessage" , "로그인 후 이용해주십시오");
           
           response.sendRedirect("/iumui/main/main.html");
 

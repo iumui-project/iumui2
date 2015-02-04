@@ -70,6 +70,7 @@ label {
   color: #A9A9A9;
 }
 .row_group {
+	background-color: white;
   margin: 0px auto;
   width: 500px;
   border : 1px solid gray;
@@ -124,19 +125,19 @@ background-color: white;
   height: 50px;
   font-size: x-large;
   background-color: #44619D;
-  color: black;
+  color: #DDE1EA;
 }
 
 #confirmPhoneNo{
  margin-left: 25px;
  background-color: #44619D;
- color: black;
+ color: #DDE1EA;
 }
 
 #confirm{
  margin-left: 25px;
  background-color: #44619D;
- color: black;
+ color: #DDE1EA;
 }
 
 
@@ -240,7 +241,7 @@ background-color: white;
               <div id='emailDiv' class="sign_row">
                 <span class="insert_box">
                   <input type="text" id="email" placeholder="이메일 (아이디로 사용합니다.)">
-                  <span class="email_confirm"></span>
+                  <span class="email_confirm" style="margin-left: 10px;""></span>
                 </span>
                 <div id='emailMsg' class='error'></div>
               </div>
@@ -248,7 +249,7 @@ background-color: white;
               <div id='passwdDiv' class="sign_row">
                 <span class="insert_box">
                   <input type="password" id="passwd" placeholder="비밀번호">
-                  <span class="passwd1"></span>
+                  <span class="passwd1" style="margin-left: 10px;"></span>
                 </span>
                 <div id='passwdMsg' class='error'></div>
               </div>
@@ -256,7 +257,7 @@ background-color: white;
               <div id='passwdChkDiv' class="sign_row">
                 <span class="insert_box">
                   <input type="password" id="passwdChk" placeholder="비밀번호 재확인">
-                  <span class="passwd2"></span>
+                  <span class="passwd2" style="margin-left: 10px;"></span>
                 </span>
                 <div id='passwdChkMsg' class='error'></div>
               </div>
@@ -328,7 +329,7 @@ background-color: white;
             <div class='row_group'>
             <div id='sexDiv' class="sign_row">
                 <span class="insert_box">
-                  <span class="local">지역선택</span>
+                  <span class="local" style=" font-size: x-large; ">지역선택</span>
                   <span class="sex" style="margin-left: 70px;">
                    <span class='local1'>
                    <select id='grp_state' name="state">
@@ -346,7 +347,7 @@ background-color: white;
               <div id="clear"></div>
             
             <div class='row_group'>
-              <button id="signInBtn" type="button" >가입하기</button>
+              <button id="signInBtn" type="button" style=" border-top-width: 1px; border-left-width: 1px;">가입하기</button>
             </div>
           </form>
         </div>
