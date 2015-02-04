@@ -84,6 +84,7 @@
     <result column="lcode" property="goodCount"/>
     <result column="mno" property="writerNo"/>
     <result column="uname" property="writer"/>
+    <result column="myphoto" property="writerPhoto"/>
     <result column="good_count" property="goodCount"/>
     <result column="req_count" property="reqCount"/>
   </resultMap>
