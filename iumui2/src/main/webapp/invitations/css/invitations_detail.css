@@ -13,7 +13,7 @@ div {
 
 .writer_photo { float: left; font-size: small; width: 80px; height: 80px; } 
 
-.photo { border: 1px solid red; width: 60px; height: 60px;} 
+.photo { width: 60px; height: 60px;} 
 
 .board_info { padding-left:10px;}
 
