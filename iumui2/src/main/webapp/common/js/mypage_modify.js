@@ -14,16 +14,16 @@ var afterBirth;
 
 $(function(){
   /*$('.header').load('/iumui/common/header.html');*/
-  loadLocalList1();
-  loadLocalList();
+  //loadLocalList1();
+  //loadLocalList();
   loadUserList();
-  
+  /*
   $('#grp_state').focusout(function(){
     var grp_state = ($('#zone').val());
     console.log(grp_state);
     
   });
-  
+  */
 });//ready()
 
 //회원정보 서치
@@ -67,7 +67,7 @@ function loadUserList() {
     $('#myself').val(member.introWord); //인사말 출력
     $('#birth').val(member.birthDate); //생년월일 출력
     $('#sex').val(sex); //성별 출력
-    $('#zone').val(bigLocalName +"  "+member.localName); //지역 출력
+    loadLocalList();
     $('#myphoto').val(member.userPhoto); //내사진 출력
     $('#blah').attr('src','/iumui/fileupload/' + member.userPhoto);
     console.log(member.userPhoto);
@@ -77,6 +77,50 @@ function loadUserList() {
     });
 }
 
+function loadLocalList() {
+  $.getJSON('../json/board/mylocal_big.do', 
+    function(data){
+  		//console.log(data);
+  	
+	  	require(['text!templates/local-big.html'], function(html){
+	      var template = Handlebars.compile(html);
+	      $('#selectState').html( template(data) );
+	      $("#selectState > option[value=" + data.mylocal_big + "]").attr("selected", "ture");
+	      loadSmallLocalList();
+	    });
+    });
+}
+
+function loadSmallLocalList() {
+	//console.log($('#selectState option:selected').val());
+	$.getJSON('../json/board/mylocal_small.do?no=' + $('#selectState option:selected').val(), 
+	    function(data){
+	  		//console.log(data);
+		
+		  	require(['text!templates/local-small.html'], function(html){
+		      var template = Handlebars.compile(html);
+		      $('#selectCity').html( template(data) );
+		      $("#selectCity > option[value=" + data.mylocal_small + "]").attr("selected", "ture");
+		    });
+		  	
+	    });
+}
+
+$('#selectState').change(function(){
+	
+	$.getJSON('../json/board/local_small.do?no=' + $('#selectState option:selected').val(), 
+	    function(data){
+	  		//console.log(data);
+	  	
+		  	require(['text!templates/local-small.html'], function(html){
+		      var template = Handlebars.compile(html);
+		      $('#selectCity').html( template(data) );
+		    });
+	    });
+});
+
+
+/*
 //회원정보 빅로컬 서치
 function loadLocalList() {
   
@@ -104,6 +148,7 @@ function loadLocalList1() {
     });
 }
 
+
 $('#grp_state').change(function(){
   
   $.getJSON('../json/board/local_small.do?no=' + $(this).val(), 
@@ -119,7 +164,7 @@ $('#grp_state').change(function(){
         });
       });
 });
-
+*/
 
 //성별 체크   
 $('input[name=gender]:radio').click(function(event){
@@ -198,7 +243,7 @@ $('input[name=gender]:radio').click(function(event){
            introWord : $('#myself').val(),  //인사말
            birthDate : $('#birth').val(), //생년월일
            sex : member.sex,        //성별
-           selectLocal : $('#selectLocal').val() //지역 
+           selectLocal : $('#selectCity').val() //지역 
            
          } 
          , function(result){
@@ -250,7 +295,7 @@ $('input[name=gender]:radio').click(function(event){
            });
      
    });
-   
+/*   
    //지역 변경
    function changeLocal() {
      $("#confirm").hide();
@@ -273,7 +318,7 @@ $('input[name=gender]:radio').click(function(event){
      console.log(selectLocal);
      
    });
-
+*/
    
   
      

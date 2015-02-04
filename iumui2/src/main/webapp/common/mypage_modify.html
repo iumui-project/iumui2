@@ -13,7 +13,7 @@ label {
   position:absolute;
   width: 80px;
   text-align: center;
-  border: 1px solid #999;
+  /* border: 1px solid #999; */
   background-color: white;
   padding: 4px 25px;
   display: inline;
@@ -28,6 +28,7 @@ label {
 .inputRow {
   width : 50px;
   display : inline;
+  
 }
 
 #conTitle {
@@ -64,14 +65,13 @@ label {
   width: 390px;
 }
 
-#sexDiv {
+/* .sexDiv {
   padding: 10px 5px;
   color: #A9A9A9;
-}
+} */
 .row_group {
   margin: 0px auto;
   width: 500px;
-  border : 1px solid gray;
   border-radius: 3px;
 }
 
@@ -91,6 +91,7 @@ label {
   width : 500px;
   height: 51px;
   margin : 0 auto;
+  
 }
 
 .sign_form {
@@ -107,7 +108,13 @@ label {
 
 .inputBox{
 margin-top: 100px;
+padding-left: 20px;
 
+ 
+}
+.email_confirm{
+
+padding-left: 20px;
  
 }
 
@@ -147,12 +154,6 @@ padding-top: 0px;
 padding-right: 5px;
 }
 
-/*지역  */
-#sexDiv{
-    display:none;  
-
-}
-
 #confirm{
  position: absolute;
  margin-left: 322px;
@@ -163,9 +164,25 @@ padding-right: 5px;
 #zone{
 
 }
+/* 
+.searchDiv {
+  margin: 0 8px 0 0;
+}
+ */
+ /* 
+#selectState, #selectCity {
+  width:140px;
+  float:left;
+}
+ */
+ 
+.selectDiv { margin-left:20px; margin-top:8px;}
 
+#selectState{ width:150px;float:left;}
 
+#selectCity { width:150px;float:left;  }
 
+  
 </style>
 <body>
   <div id='content_container'>
@@ -274,7 +291,7 @@ padding-right: 5px;
       <form id='sign_form' action="">
           
             <div class='row_group'>
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
               
               <div class="inputRow">이메일</div>
                   <input class="inputBox" type="text" id="email" placeholder="이메일 (아이디로 사용합니다.)"
@@ -283,33 +300,33 @@ padding-right: 5px;
               </div>
               
               
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
               <div class="inputRow">이름</div>
                   <input class="inputBox" type="text" id="name" placeholder="이름"
                   style ="position: absolute; margin-top: 0px; margin-left: 77px;">
                   <div class="email_confirm"></div>
               </div>              
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
               <div class="inputRow">닉네임</div>
                   <input class="inputBox" type="text" id="nick" placeholder="닉네임"
                   style ="position: absolute; margin-top: 0px; margin-left: 62px;">
                   <div class="email_confirm"></div>
               </div>              
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
              <div class="inputRow">연락처</div>
                   <input class="inputBox" type="text" id="pnoneNo" placeholder="핸드폰번호"
                   style ="position: absolute; margin-top: 0px; margin-left: 62px;">
                   <div class="email_confirm"></div>
               </div>     
                        
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
               <div class="inputRow">자기소개</div>
                   <input class="inputBox" type="text" id="myself" placeholder="인사말을 입력해주세요"
                   style ="position: absolute; margin-top: 0px; margin-left: 47px;">
                   <div class="email_confirm"></div>
               </div>
                             
-              <div id='emailDiv' class="sign_row">
+              <div class="sign_row">
               <div class="inputRow">생년월일</div> 
                   <input class="inputBox" type="text" id="birth" placeholder="생년월일"
                   style ="position: absolute; margin-top: 0px; margin-left: 47px;">
@@ -317,15 +334,18 @@ padding-right: 5px;
               </div>              
                         
             <!--지역 입력  -->
-              <div id='emailDiv' class="sign_row">
-              <div class="inputRow">사는 지역</div>
-                  <input class="inputBox" type="text" id="zone" placeholder="지역"
-                  style ="position: absolute; margin-top: 0px; margin-left: 42px;">
-                  <a href='#' onclick="changeLocal();" id='confirm'>변 경</a>
-                  <div class="email_confirm"></div>
+              <div class="sign_row">
+              <div id='local' class="inputRow">활동지역</div>
+	              
+              <div type="text" style ="margin-right: 3px; background-color:white; float:right; height: 50px; width: 390px; border:1px solid white;">
+                  <div class="form-group form-group-sm selectDiv">
+                  <select id='selectState' name="state" class="form-control form-group-sm selectLocal"></select>
+                  <select id='selectCity' name="city" class="form-control form-group-sm selectLocal"></select>
+                </div>
+              </div>
               </div>    
-            
-            <!--지역 수정  -->
+            <!-- 
+            지역 수정 
             <div class='row_group'>
             <div id='sexDiv' class="sign_row">
                 <div class="insert_box">
@@ -344,8 +364,8 @@ padding-right: 5px;
                   </div>
                 </div>
               </div>
-              </div>
-            
+              </div>  
+             -->
             
             </div>
               
