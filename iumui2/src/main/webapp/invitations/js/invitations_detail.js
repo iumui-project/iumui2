@@ -36,7 +36,7 @@ function loadBoard(boardNo) {
   		console.log(data.board);
   		//console.log(data.loginUser);
   		//console.log(data.boardComments);
-  		//console.log(data.boardRequests);
+  		console.log(data.boardRequests);
   		board.reqCount++;
   		
   		if (board.writerPhoto) {
