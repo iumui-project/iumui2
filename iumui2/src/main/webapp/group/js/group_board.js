@@ -114,7 +114,7 @@ function loadGroupBoardComment() {
 		$('#commentSet' + groupBoardComments[i].groupBoardNo).prepend("<div id='comment" + groupBoardComments[i].groupBoardNo + 
 				"' class='board_comment' gb-no='" + groupBoardComments[i].groupBoardNo + 
 				"' comment-no='" + groupBoardComments[i].no + "'>" +
-				"<div class='writer_photo'><img src='../icon/64x64/row 9/1.png'></div>" +
+				"<div class='writer_photo'><img class='photo' src='/iumui/fileupload/" + groupBoardComments[i].userPhoto + "'></div>" +
 				"<div class='board_info'>" +
 				"<div class='top_style'>" +
 				"<div id='commenter" + groupBoardComments[i].groupMemberNo + 
