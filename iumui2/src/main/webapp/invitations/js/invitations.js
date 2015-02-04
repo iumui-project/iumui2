@@ -9,6 +9,7 @@ var boardSearchText;
 
 $(function(){
 	$('.header').load('/iumui/common/header.html');
+	$('.side_bar').load('/iumui/common/sidebar.html');
 	$('.footer').load('/iumui/common/footer.html');
 /*	$('.search_bar').load('/iumui/common/search_bar.html');*/
 	

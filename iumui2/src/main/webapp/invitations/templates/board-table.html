@@ -7,7 +7,7 @@
               <th class='boardTd board_center'>모집일</th>
               <th class='boardTd board_center'>종료일</th>
               <th class='boardTd board_center'>작성자</th>
-              <th class='boardTd rightTd board_center'>추천/조회</th>
+              <th class='boardTd rightTd board_center' style="width: 66px;">추천/조회</th>
             </tr>
 {{#each board}}
             <tr class='data-row'>
@@ -17,7 +17,7 @@
               <td class='boardTd board_center'>{{startDate}}</td>
               <td class='boardTd board_center'>{{endDate}}</td>
               <td class='boardTd board_center'>{{writer}}</td>
-              <td class='boardTd rightTd board_center'>{{goodCount}}/{{clickCount}}</td>
+              <td class='boardTd rightTd board_center'style="width: 66px;">{{goodCount}}/{{clickCount}}</td>
             </tr>           
 {{/each}}
           </tbody>
