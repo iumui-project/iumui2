@@ -14,9 +14,15 @@ var afterBirth;
 
 $(function(){
   /*$('.header').load('/iumui/common/header.html');*/
-  
+  loadLocalList1();
   loadLocalList();
   loadUserList();
+  
+  $('#grp_state').focusout(function(){
+    var grp_state = ($('#zone').val());
+    console.log(grp_state);
+    
+  });
   
 });//ready()
 
@@ -82,6 +88,38 @@ function loadLocalList() {
     });
 }
 
+//지역 검색
+function loadLocalList1() {
+  
+  $.getJSON('../json/board/local_big.do', 
+    function(data){
+    
+      console.log(data);
+    
+      require(['text!templates/local-big.html'], function(html){
+        var template = Handlebars.compile(html);
+        $('#grp_state').html( template(data) );
+      });
+      
+    });
+}
+
+$('#grp_state').change(function(){
+  
+  $.getJSON('../json/board/local_small.do?no=' + $(this).val(), 
+      function(data){
+      
+        //console.log(data);
+      
+        require(['text!templates/local-small.html'], function(html){
+          var template = Handlebars.compile(html);
+          $('#selectLocal').html( template(data) );
+          
+          
+        });
+      });
+});
+
 
 //성별 체크   
 $('input[name=gender]:radio').click(function(event){
@@ -107,9 +145,18 @@ $('input[name=gender]:radio').click(function(event){
    
    //수정완료 버튼
    function button_event(){
-     if (confirm("수정하시겠습니까?") == true){    //확인
-       console.log("성공");
-       updateMember(no);
+     if (confirm("수정하시겠습니까?") == true){ //확인
+       if($('#email').val() != member.email){
+         alert("이메일은 변경 불가능 합니다.");         
+       }else if($('#birth').val() != member.birthDate){
+         alert("생일은 변경 불가능 합니다.");  
+       }else{
+         updateMember(no);         
+         console.log("성공");
+       }
+         
+         
+       
      }else{   //취소
        console.log("취소");
          return;
@@ -151,13 +198,13 @@ $('input[name=gender]:radio').click(function(event){
            introWord : $('#myself').val(),  //인사말
            birthDate : $('#birth').val(), //생년월일
            sex : member.sex,        //성별
-           selectLocal : member.selectLocal //소지역
+           selectLocal : $('#selectLocal').val() //지역 
            
          } 
          , function(result){
            if (result.status == "success") {
              alert("변경 성공! 메인페이지로 이동합니다.");
-            // location.href="/iumui/index.html";
+             location.href="/iumui/index.html";
              
            } else {
              alert("변경 실패!");
@@ -187,7 +234,6 @@ $('input[name=gender]:radio').click(function(event){
          dataType:'json',
 
              beforeSubmit: function (data, frm, opt) {
-                             alert("전송전!!");
                              
                              return true;
                            },
@@ -195,13 +241,36 @@ $('input[name=gender]:radio').click(function(event){
                alert("전송 성공");
                console.log("콘솔창"+responseText);
                console.log("콘솔창"+statusText);
-              // location.href="/iumui/common/mypage_modify.html";
+               location.href="/iumui/common/mypage_modify.html";
                
              } ,
              error: function(){
                  alert("에러발생!!");
              }        
            });
+     
+   });
+   
+   //지역 변경
+   function changeLocal() {
+     $("#confirm").hide();
+     
+     if($("#sexDiv").css("display") == "none"){
+       $("#sexDiv").show();
+   } else {
+       $("#sexDiv").hide();
+   }//end else
+     
+     
+     
+     
+     $('#sexDiv').focus();
+    
+   }
+   
+   $('#selectLocal').focusout(function(){
+     var selectLocal = ($('#selectLocal').val());
+     console.log(selectLocal);
      
    });
 

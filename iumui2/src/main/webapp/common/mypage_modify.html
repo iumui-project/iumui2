@@ -147,6 +147,25 @@ padding-top: 0px;
 padding-right: 5px;
 }
 
+/*지역  */
+#sexDiv{
+    display:none;  
+
+}
+
+#confirm{
+ position: absolute;
+ margin-left: 322px;
+ background-color: #44619D;
+ color: black;
+}
+
+#zone{
+
+}
+
+
+
 </style>
 <body>
   <div id='content_container'>
@@ -297,19 +316,38 @@ padding-right: 5px;
                   <div class="email_confirm"></div>
               </div>              
                         
+            <!--지역 입력  -->
               <div id='emailDiv' class="sign_row">
               <div class="inputRow">사는 지역</div>
                   <input class="inputBox" type="text" id="zone" placeholder="지역"
                   style ="position: absolute; margin-top: 0px; margin-left: 42px;">
+                  <a href='#' onclick="changeLocal();" id='confirm'>변 경</a>
                   <div class="email_confirm"></div>
-              </div>              
-                         
-              
+              </div>    
+            
+            <!--지역 수정  -->
+            <div class='row_group'>
+            <div id='sexDiv' class="sign_row">
+                <div class="insert_box">
+                  <div class="local" style="color: #4e5665;">지역선택</div>
+                  <div class="sex" style="margin-left: 100px;margin-top: -31px;/* margin-bottom: -36px; */background-color: white;width: 392px;height: 50px;position: absolute;">
+                   <div class='local1'>
+                   <select id='grp_state' name="state"
+                   style="position: absolute; margin-top: 12px; margin-left: 31px;">
+                   <option value=''>상위 지역</option></select>&nbsp;&nbsp;
+                   </div>
+                   <div class='local2'>
+                    <select id='selectLocal' name="dist"
+                    style="position: absolute; margin-top: -10px; margin-left: 203px;">
+                    <option value=''>하위 지역</option></select>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            
+            
             </div>
-            
-            
-            <!--지역 입력  -->
-            
               
               <div id="clear"></div>
             
