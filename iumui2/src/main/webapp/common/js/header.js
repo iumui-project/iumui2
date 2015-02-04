@@ -2,39 +2,19 @@
  * Header JS
  * 
  * /iumui/common/js/header.js
- * 
  * 헤더 자바스크립트 소스
- * 
- * 2015.1월
+ * 2015.2월 - 권영근, 김광철, 조현권
  */
 //var logintester;
   // 쿠키 가져오기
 $(function(){
-  alert(document.cookie);
   console.log("쿠키값:"+ document.cookie);
+  
+  
   var cookieId = (document.cookie).split('"');
   console.log(cookieId[1]);
   
-  /*console.log(document.cookie);
-  
-  if(document.cookie != null){
-    $("#inputId").val(document.cookie);          // email textbox에 쿠키값 출력
-
-    $("#save").attr("checked", "checked");    // 체크박스에 체크
-
-      }
-     
-  }*/
-  
-  
- 
-  
-  
 });
-
-
-
-     
   
 
 	$('#my_loginBox').css('display', 'none');
