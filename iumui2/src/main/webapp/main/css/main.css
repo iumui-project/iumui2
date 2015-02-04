@@ -6,7 +6,5 @@
 .main_tables th {background-color:#DDE1EA;}
 .board_title {height:2.2em; font-size:0.8em; overflow:hidden; text-overflow:ellipsis}
 #tables {float:left; width:52.25em; }
-#mainTable {margin-top:0.625em; padding-top:0.6em; }
-
-#f2, #u2 { text-align:center; } 
+#mainTable {margin-top:0.625em; padding-top:0.6em; } 
 /*main CSS start*/
