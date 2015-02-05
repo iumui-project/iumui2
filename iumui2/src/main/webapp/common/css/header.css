@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
-#logo_div a { font-size: 35px; color : white; }
-#logo_div { float: left; margin : 0.413em 2.75em; text-decoration: none; }
+#logo_div a { font-size: 35px; font-weight:bold; color : white; }
+#logo_div { float: left; margin : 0.413em 1.5em; text-decoration: none; }
 
 #menu a { font-size: 20px; font-weight:bold; color : #DDE1EA; }
 #menu { float: left; margin : 0.413em 2.75em; text-decoration: none; }
