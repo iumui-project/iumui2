@@ -45,9 +45,16 @@ public class AuthFilter implements Filter {
     	
       	if (!request.getServletPath().startsWith("/auth") &&
             request.getSession().getAttribute("loginUser") == null) {
+          /*
+      	  request.getSession().setAttribute("requestUrl", 
+              request.getRequestURL() + "?" + request.getQueryString());
+      	  */
+          /*
+          response.sendRedirect(
+              request.getServletContext().getContextPath()
+              + "/auth/login.do");
+          */
           
-//          request.getSession().setAttribute("requestUrl", 
-//              request.getRequestURL() + "?" + request.getQueryString());
           
           request.getSession().setAttribute("IUMUImessage" , "로그인 후 이용해주십시오");
           
