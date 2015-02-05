@@ -23,12 +23,13 @@ function getUrlParameter(sParam){
 
 var gno = getUrlParameter("gno");
 
-console.log("gno" + gno);
+//console.log("getUrlParameter(gno) = " + gno);
 
 $('#m1 a ').attr('href', 'group_board.html?gno=' + gno);
 $('#m4 a ').attr('href', 'group_members.html?gno=' + gno);
 
 if (gno == 0) {
+	//console.log("조건 gno == 0");
   $('#sidebar_contents1 a').html("메뉴");
   $('#m1 a ').html("&rtrif; 뉴스피드");
   $('#m3 a ').html("&rtrif; 모든일정");
@@ -37,9 +38,9 @@ if (gno == 0) {
   
   $('title').html("IUMUI - 모두 보기");
   
- } else if(getUrlParameter(gno) == null) {
+ } else if(gno == null) {
 	 
-	 console.log("파라미터 없음");
+	 //console.log("조건 getUrlParameter(gno) == NULL");
   $('#sidebar_contents1 a').html("메뉴");
   $('#m1 a ').html("&rtrif; 뉴스피드");
   $('#m3 a ').html("&rtrif; 모든일정");
@@ -47,7 +48,9 @@ if (gno == 0) {
   $('#a_mn').remove();
 	  
 	  $('title').html("IUMUI - 모든 그룹 보기");
+	  
  } else {
+   //console.log("조건 else");
   $('#sidebar_contents1 a').html("메뉴");
   $('#m1 a ').html("&rtrif; 뉴스피드");
  	$('#m3 a ').html("&rtrif; 일&nbsp;"+ "&nbsp;&nbsp;&nbsp;"+"&nbsp;정");
