@@ -364,26 +364,26 @@ function loadRecGroups() {
 
 /** 나의 모임 start */
 function loadMyGroups(pageNo) {
-
 	$.getJSON('../group/mygroups.do?pageNo='+ pageNo, 
 			function(data){
 
-		/** 확인용 로그*/
-		console.log("나의 모임 페이지 로드 : " + data.status);
-		/** 확인용 로그*/
-
-		var myGroups = data.groups;
-		
+		var myGroups = data.groups
 		console.log(myGroups);
 		
 		/**사이드 2번 테이블 제목 삽입 start*/
-		$('#sidebar_contents2 a').attr('href','/iumui/group/group_list.html').html("나의 모임");
+		$('#sidebar_contents2 a').attr('href','../group/group_list.html').html("나의 모임");
 		/**사이드 2번 테이블 제목 삽입 end*/
 		
+		if(data.groups == null) {
+			for ( var i=0; i < 6; i++ ) {
+				$('#sidebar_table2_content').append("<tr><td id=\"u" + i + "\" class=\"sidebar_title\"></td></tr>");
+			}
+				$('#u2').html("로그인 후 이용해 주세요");
+		}
+		
 		if((data.status) == "success"){
-			
 			if(myGroups.length > 0){
-				require(['text!sidebar/mygroup_list.html'], function(html){
+				require(['text!sidebar/side_table2.html'], function(html){
 					var template = Handlebars.compile(html);
 					$('#sidebar_table2_content').append(template(data));
 					console.log("사이드바 2번 테이블 데이터 : " + $('#sidebar_table2_content').find('tr').length);
@@ -391,32 +391,25 @@ function loadMyGroups(pageNo) {
 					var mgtRow = $('#sidebar_table2_content').find('tr').length;
 				
 					if(mgtRow < 6) {
-					
 						for ( var i=0; i < ( 6 - mgtRow ); i++ ) {
 							$('#sidebar_table2_content').append("<tr><td class=\"sidebar_title\"></td></tr>");
 						}
 						
 					}
 				});
-				// expireDay - nowDate < 0 : Delete groupBoard and Group etc...
-				var nowDate = new Date();
-				for (var i in myGroups ) {
-					console.log("expireDay: " + myGroups[i].expireDay);
-					console.log("nowDate: " + nowDate);
-					console.log("종료 기간 (음수 삭제): " + (myGroups[i].expireDay - nowDate));
-					if ((myGroups[i].expireDay - nowDate) < 0 ) {
-						alert("[" + myGroups[i].gname + "] 모임 기간이 종료되어 모임과 게시판들을 삭제 합니다.")
-						deleteGroupBoard(myGroups[i].gno);
-						
-					}
-				}
-				
 			} else {
-				$('#sidebar_table2_content').append("다른 그룹이 없습니다");
+				for ( var i=0; i < 6; i++ ) {
+					$('#sidebar_table2_content').append("<tr><td id=\"u" + i + "\" class=\"sidebar_title\"></td></tr>");
+				}
+					$('#u2').html("아직 가입한 그룹이 없습니다.");
 			}
 		}
+	}).error(function() {
+		alert("<IUMUI> 브라우저를 다시 시작해주세요.");
 	});
+	
 };
+/** 나의 모임 end */
 
 function recommendBoard() {
 	$.getJSON('../json/board/recommend.do?no=' + board.no, 
