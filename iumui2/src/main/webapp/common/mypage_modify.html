@@ -5,6 +5,7 @@
 <title>IUMUI_회원정보변경</title>
 <link rel='stylesheet' href='/iumui/common/css/header.css'>
 <link rel='stylesheet' href='../common/css/common.css'>
+<link rel='stylesheet' href='../css/bootstrap.css'>
 <script src='/iumui/js/jquery-1.11.1.js'></script>
 </head>
 <style>
@@ -123,30 +124,36 @@ padding-left: 20px;
   height: 50px;
   font-size: x-large;
   background-color: #44619D;
-  color: black;
+  color: white;
+  /* font-weight: bold; */
 }
 
 #blah{
 width: 130px;
 height: 130px;
-border: 1px solid gray;
-margin-top: 100px;
+border: 1px solid #ddd;
+margin-top: 30px;
+margin-left: 58px;  
 }
 
 #fileUpload{
-   width: 50px;
-   height: 20px;
-   border: 0px solid red;
-   margin-left: 50px;
-   
+ position: absolute;
+ width: 250px;
+ height: 260px;
+ background-color: white;
+ border: 1px solid #ddd;
+ margin-left: 20px;  
 } 
 
 #userfile{
-margin-top: 5px;
+ margin-left: 10px;
+  margin-top: 5px;
+  width: 228px;
 }
 
 #uploadbutton{
-margin-top: 10px;
+ margin-top: 10px;
+ margin-left: 20px;
 }
 
 #logoutSubmit {
@@ -164,6 +171,7 @@ padding-right: 5px;
 #zone{
 
 }
+
 /* 
 .searchDiv {
   margin: 0 8px 0 0;
@@ -176,10 +184,10 @@ padding-right: 5px;
 }
  */
  
-.selectDiv { margin-left:20px; margin-top:8px;}
+.selectDiv { margin-left:30px; margin-top:8px;}
 
 #selectState{ width:150px;float:left;}
-
+#spaceSpan{ width:20px;float:left;}
 #selectCity { width:150px;float:left;  }
 
   
@@ -280,9 +288,11 @@ padding-right: 5px;
         enctype="multipart/form-data">
          <img id="blah" onerror="this.src='../icon/64x64/no-image.png';" src=""
           alt="이미지를 올려주세요" />
-        <input type="file" id="userfile" name="userPhotofile"
-          onchange="readURL(this);" />
-         <input type="submit" id="uploadbutton" value="사진등록" />
+        <div class='col-sm-10'>
+	        <input type="file" id="userfile" class='form-control' name="userPhotofile"
+	          onchange="readURL(this);" />
+        </div>
+         <input type="submit" id="uploadbutton" class='btn btn-default btn-sm' value="사진등록" />
       </form>
       
       </div>
@@ -339,7 +349,7 @@ padding-right: 5px;
 	              
               <div type="text" style ="margin-right: 3px; background-color:white; float:right; height: 50px; width: 390px; border:1px solid white;">
                   <div class="form-group form-group-sm selectDiv">
-                  <select id='selectState' name="state" class="form-control form-group-sm selectLocal"></select>
+                  <select id='selectState' name="state" class="form-control form-group-sm selectLocal"></select><span id='spaceSpan'> &nbsp; </span>
                   <select id='selectCity' name="city" class="form-control form-group-sm selectLocal"></select>
                 </div>
               </div>
