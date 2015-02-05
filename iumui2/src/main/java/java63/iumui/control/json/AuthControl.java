@@ -1,7 +1,6 @@
 package java63.iumui.control.json;
 
 import java.util.HashMap;
-
 import java63.iumui.domain.Member;
 import java63.iumui.service.MemberService;
 
@@ -14,13 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.util.CookieGenerator;
 
 @Controller("json.authControl") 
 @RequestMapping("/json/auth") 
 public class AuthControl {
   @Autowired MemberService memberService;
-  
+ 
   @RequestMapping(value="/loginUser", method=RequestMethod.GET)
   public Object loginUser(HttpSession session) throws Exception {
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -33,7 +31,7 @@ public class AuthControl {
     }
     return resultMap;
   }
-  
+
   @RequestMapping(value="/login", method=RequestMethod.POST)
   public Object login(
       String email, 
@@ -43,18 +41,15 @@ public class AuthControl {
       HttpServletResponse response,
       HttpSession session) throws Exception {
     
-
-    
-
-    if (save == true) {
+    if (save) {
+      /*
       CookieGenerator cg = new CookieGenerator();
-
       cg.setCookieName("email");
       cg.addCookie(response, email);
-      
-      /*Cookie cookie = new Cookie("email", email);
+      */
+      Cookie cookie = new Cookie("email", email);
       cookie.setMaxAge(60 * 60 * 24 * 15);
-      response.addCookie(cookie); */
+      response.addCookie(cookie);
       
      
     } else {
@@ -82,8 +77,6 @@ public class AuthControl {
   public Object logOut(HttpSession session,HttpServletRequest request) throws Exception {
     session.invalidate();
     HashMap<String,Object> resultMap = new HashMap<>();
- 
-    
     resultMap.put("status", "success");
     return resultMap;
   }
