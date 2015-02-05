@@ -86,6 +86,8 @@ function parseSchedules(schedules) {
 function loadThisGroupSchedules(){
 $.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
   	
+		console.log(data.schedules);
+	
 	  var schedules = data.schedules;
 	  var events = parseSchedules(schedules);
 	  var groupColor = "#222222";
@@ -93,6 +95,8 @@ $.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
 	  if(schedules.length > 0){
 	  	groupColor = schedules[0].formColor;
 	  }
+	  
+	  console.log(events);
 	  
 	  $('#calendar').fullCalendar({
 	    langs : 'ko', //언어설정
@@ -129,7 +133,7 @@ $.getJSON('../groupschedule/thisgroupschedule.do?gno=' + gno, function(data) {
    		
 	    eventSources : [
 	        {
-				    events : schedules
+				    events : events
 				  ,
 				  				 color : groupColor,
 				  				 textColor: 'yellow'

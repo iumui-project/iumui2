@@ -36,7 +36,7 @@
   
   <resultMap type="map" id="userSchedules">
     <id column="startday" property="startday"/>
-    <result column="endday" property="endday"/>
+    <result column="endday" property="end"/>
     <result column="cschedule" property="schedule"/>
     <result column="color" property="formColor"/>
   </resultMap>
@@ -157,6 +157,11 @@
   <delete id="deleteSchedules" parameterType="int">
     delete from gschedule where gno=#{no}
   </delete>
+  
+  <insert id="insertGroupSchedule" parameterType="map">
+    INSERT INTO GSCHEDULE 
+    VALUES (calendarno.nextval, #{groupNo}, #{startDay},#{scheduleContent},#{endDay})
+  </insert>
   
 </mapper>
 

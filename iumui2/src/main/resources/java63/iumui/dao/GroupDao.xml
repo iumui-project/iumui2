@@ -36,7 +36,7 @@
   
   <resultMap type="map" id="userSchedules">
     <id column="startday" property="startday"/>
-    <result column="endday" property="endday"/>
+    <result column="endday" property="end"/>
     <result column="cschedule" property="schedule"/>
     <result column="color" property="formColor"/>
   </resultMap>
