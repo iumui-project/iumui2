@@ -348,6 +348,8 @@ function loadSideMenu() {
 	});	
 };
 
+/** 그룹메뉴 start*/
+
 $('#uploadbtn').click(function(){
 	
 	if (!validateReg()) return;
