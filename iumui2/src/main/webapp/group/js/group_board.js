@@ -61,8 +61,8 @@ function parseGno(){
 	gno = getUrlParameter("gno");
 	if (!gno) {
 		gno = 0;
-		console.log("===================" + gno)
-		console.log("[" + gno + "]");
+		//console.log("===================" + gno)
+		//console.log("[" + gno + "]");
 		$('#board_upload').css('display', 'none');
 	} else {
 		$('#board_upload').css('display', '');
@@ -73,7 +73,7 @@ function loadGroupBoard() {
 	$.getJSON('../group_board/board_list.do?no='+ gno, 
 			function(data){
 		
-		console.log(data);
+		//console.log(data);
 		loginUser = data.loginUser;
 		groupBoards = data.groupBoards;
 		groupBoardComments = data.groupBoardComments;
@@ -231,16 +231,16 @@ function updateGroupBoard(sNo) {
         	$('#bcontent' + sNo).val('');
         	$('#modify_content' + sNo).css('display', 'none');
         	
-        	alert("수정 성공");
+        	alert("수정 성공하였습니다.");
         
         } else {
-          alert("등록 실패!");
+          alert("등록 실패하였습니다.");
         }
       } 
       , 'json'  )
     
    .fail(function(){ 
-     alert("다시 시도해 주십시오");
+     alert("다시 시도하 주십시오");
    });
 }
 /*
@@ -257,7 +257,7 @@ function loadMyGroups(pageNo) {
 			function(data){
 
 		/** 확인용 로그*/
-		console.log("나의 모임 페이지 로드 : " + data.status);
+		//console.log("나의 모임 페이지 로드 : " + data.status);
 		/** 확인용 로그*/
 
 		var myGroups = data.groups;
@@ -274,7 +274,7 @@ function loadMyGroups(pageNo) {
 				require(['text!sidebar/mygroup_list.html'], function(html){
 					var template = Handlebars.compile(html);
 					$('#sidebar_table2_content').append(template(data));
-					console.log("사이드바 2번 테이블 데이터 : " + $('#sidebar_table2_content').find('tr').length);
+					//console.log("사이드바 2번 테이블 데이터 : " + $('#sidebar_table2_content').find('tr').length);
 					
 					var mgtRow = $('#sidebar_table2_content').find('tr').length;
 				
@@ -289,9 +289,9 @@ function loadMyGroups(pageNo) {
 				// expireDay - nowDate < 0 : Delete groupBoard and Group etc...
 				var nowDate = new Date();
 				for (var i in myGroups ) {
-					console.log("expireDay: " + myGroups[i].expireDay);
-					console.log("nowDate: " + nowDate);
-					console.log("종료 기간 (음수 삭제): " + (myGroups[i].expireDay - nowDate));
+					//console.log("expireDay: " + myGroups[i].expireDay);
+					//console.log("nowDate: " + nowDate);
+					//console.log("종료 기간 (음수 삭제): " + (myGroups[i].expireDay - nowDate));
 					if ((myGroups[i].expireDay - nowDate) < 0 ) {
 						alert("[" + myGroups[i].gname + "] 모임 기간이 종료되어 모임과 게시판들을 삭제 합니다.")
 						deleteGroupBoard(myGroups[i].gno);
@@ -363,10 +363,10 @@ $('#uploadbtn').click(function(){
         if (result.status == "success") {
         	
         	loadGroupBoard();
-        	alert("등록 성공");
+        	alert("등록 성공하였습니다.");
         	$('#upload_content').val('');
         } else {
-          alert("등록 실패!");
+          alert("등록 실패하였습니다.");
         }
       } 
       , 'json'  )
