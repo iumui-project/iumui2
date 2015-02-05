@@ -5,11 +5,13 @@
  */
 
 var groupSchedules;
-var gno = getUrlParameter("gno");
+var gno;
 var startday;
 
 
 $(document).ready(function() {
+	
+	gno = getUrlParameter("gno");
 	
 	loadThisGroupSchedules();
 	
@@ -17,6 +19,7 @@ $(document).ready(function() {
   	var end = $('#tenddate').val();
   	var title = $('#tschedule').val();
   	var endday = new Date(end);
+  	console.log("endday:" + endday);
   	
   	console.log(endday - startday);
   	
@@ -38,6 +41,31 @@ $(document).ready(function() {
   	}//유효성 체크
   	
   	console.log(startday + " : " + end + " : " + title);
+  	
+  	$.post('../groupschedule/add_groupschedule.do'
+        , {
+        		groupNo : gno,
+        		startDay : yyyyMMdd(startday),
+        		endDay : end,
+  			  	scheduleContent : title
+        } 
+        , function(result){  
+          if (result.status == "success") {
+          	closeBtn();
+          	
+          location.reload(true);
+          	
+          	alert("일정 등록을 성공하였습니다.");
+          } else {
+            alert("일정 등록을 실패하였습니다.");
+          } 
+        } 
+        , 'json'  )
+     
+     .fail(function(jqXHR, textStatus, errorThrown){ 
+       alert(textStatus + ":" + errorThrown);
+       
+     });
   	
   });//일정 등록 버튼
   

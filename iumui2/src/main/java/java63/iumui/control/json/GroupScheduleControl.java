@@ -1,7 +1,7 @@
 package java63.iumui.control.json;
 
+import java.util.Date;
 import java.util.HashMap;
-
 import java63.iumui.domain.Member;
 import java63.iumui.service.GroupBoardService;
 import java63.iumui.service.GroupService;
@@ -85,4 +85,18 @@ public class GroupScheduleControl {
 		
 		return resultMap;
 	}
+	
+	@RequestMapping("/add_groupschedule")
+  public Object add_groupschedule (
+      int groupNo,
+      Date startDay,
+      Date endDay,
+      String scheduleContent) throws Exception {
+	  
+	  groupService.addGroupSchedule(groupNo, startDay, endDay, scheduleContent);
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    
+    return resultMap;
+  }
 }

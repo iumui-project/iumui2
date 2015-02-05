@@ -1,8 +1,8 @@
 package java63.iumui.service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import java63.iumui.dao.GroupDao;
 import java63.iumui.domain.Group;
 import java63.iumui.domain.GroupMember;
@@ -112,5 +112,20 @@ public class GroupService {
     groupDao.deleteGroupMembers(groupNo);
     groupDao.deleteSchedules(groupNo);
     groupDao.deleteGroup(groupNo);
+  }
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void addGroupSchedule(int groupNo, Date startDay, 
+      Date endDay, String scheduleContent) {
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("groupNo",groupNo);
+    paramMap.put("startDay", startDay);
+    paramMap.put("endDay",endDay);
+    paramMap.put("scheduleContent",scheduleContent);
+    
+    groupDao.insertGroupSchedule(paramMap); 
   }
 }

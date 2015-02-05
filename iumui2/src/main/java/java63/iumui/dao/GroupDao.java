@@ -35,5 +35,5 @@ public interface GroupDao {
   void deleteGroup(int no);
   void deleteGroupMembers(int no);
   void deleteSchedules(int no);
-
+  void insertGroupSchedule(Map<String,Object> params);
 }

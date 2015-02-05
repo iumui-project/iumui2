@@ -158,5 +158,10 @@
     delete from gschedule where gno=#{no}
   </delete>
   
+  <insert id="insertGroupSchedule" parameterType="map">
+    INSERT INTO GSCHEDULE 
+    VALUES (calendarno.nextval, #{groupNo}, #{startDay},#{scheduleContent},#{endDay})
+  </insert>
+  
 </mapper>
 
