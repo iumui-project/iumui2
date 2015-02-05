@@ -23,6 +23,8 @@ function getUrlParameter(sParam){
 
 var gno = getUrlParameter("gno");
 
+console.log("gno" + gno);
+
 $('#m1 a ').attr('href', 'group_board.html?gno=' + gno);
 $('#m4 a ').attr('href', 'group_members.html?gno=' + gno);
 
@@ -34,7 +36,9 @@ if (gno == 0) {
   $('#a_mn').remove();
   
   $('title').html("IUMUI - 모두 보기");
+  
  } else if(getUrlParameter(gno) == null) {
+	 
 	 console.log("파라미터 없음");
   $('#sidebar_contents1 a').html("메뉴");
   $('#m1 a ').html("&rtrif; 뉴스피드");
