@@ -97,13 +97,16 @@ $(function(){
 			$.getJSON('../json/board/message.do', 
 			    function(mes){
 			
-				$('#msg1').append($('<p>').html("게시판 바로 가기"));
+				console.log(mes);
+				
+				
+				$('#msg1').append($('<p>').html("<b>&raquo;게시판 바로 가기<b>"));
 				
 				for (var i in mes.messages) {
 					
 					$('#msg1').append($('<br>'))
 											.append($('<p>').html("<a href='../invitations/invitations_detail.html?no=" 
-													+ mes.messages[i].boardNo + "' class='title' data-no='" 
+													+ mes.messages[i].boardNo + "' class='alarm-title' data-no='" 
 													+ mes.messages[i].boardNo + "'>" + (parseInt(i)+1) + ". " 
 													+ mes.messages[i].message + "</a>"));
 					/*
