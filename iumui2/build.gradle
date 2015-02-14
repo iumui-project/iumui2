@@ -15,15 +15,6 @@ eclipse {
   }
 }
 
-
-repositories {
-  mavenCentral()
-  
-  flatDir {
-    dirs 'lib'
-  }
-}
-
 dependencies {
   /* providedCompile => 컴파일에서만 사용. 배치에서 제외*/
   providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
