@@ -3,36 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 
-bno INTEGER NOT NULL,  게시글번호 
-    bmno INTEGER NOT NULL,  게시판구분번호 
-    mno INTEGER NOT NULL,  회원번호 
-    bname VARCHAR2(50) NOT NULL,  모임이름 
-    bintro VARCHAR2(1000) NOT NULL,  모임소개 
-    btarget_num INTEGER NOT NULL,  모임인원 
-    start_date DATE NOT NULL,  모집일자 
-    end_date DATE NOT NULL,  종료일자 
-    open_state INTEGER NOT NULL,  공개여부 
-    click_count INTEGER DEFAULT 0 NOT NULL,  조회수 
-    good_count INTEGER DEFAULT 0 NOT NULL,  추천수 
-    lcode VARCHAR2(50) NOT NULL  지역분류코드 
- -->
- <!-- 
-  protected int no;
-  protected String category;
-  protected String writer;
-  protected String title;
-  protected String content;
-  protected String targetNumber;
-  protected Date startDate;
-  protected Date endDate;
-  protected int openStatus;
-  protected int clickCount;
-  protected int goodCount;
-  protected String selectLocal;
-  
-  BMNO BCATEGORY  
-  -->
 <mapper namespace="java63.iumui.dao.CategoryDao">
 
   <resultMap type="map" id="categoryListMap">
@@ -42,9 +12,7 @@ bno INTEGER NOT NULL,  게시글번호
 
   <select id="selectCategory"
         resultMap="categoryListMap">
-    SELECT
-      bmno, 
-      bcategory 
+    SELECT bmno, bcategory 
     FROM bmaster
     ORDER BY bmno
   </select>
