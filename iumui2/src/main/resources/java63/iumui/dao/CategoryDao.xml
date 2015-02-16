@@ -39,7 +39,7 @@
   <select id="selectMainDisplay"
         resultMap="mainDisplayMap">
 		WITH p AS (select m.bcategory ctg, m.bmno num, b.bname title, b.bno bn from iboard b, bmaster m where b.bmno=m.bmno)
-    SELECT num, item
+    SELECT num, ctg
           ,max(decode(rn,1,title,'')) t1, max(decode(rn,1,bn,'')) n1
           ,max(decode(rn,2,title,'')) t2, max(decode(rn,2,bn,'')) n2
           ,max(decode(rn,3,title,'')) t3, max(decode(rn,3,bn,'')) n3
@@ -47,8 +47,8 @@
           ,max(decode(rn,5,title,'')) t5, max(decode(rn,5,bn,'')) n5
           ,max(decode(rn,6,title,'')) t6, max(decode(rn,6,bn,'')) n6
           ,max(decode(rn,7,title,'')) t7, max(decode(rn,7,bn,'')) n7
-    FROM  (SELECT num , ctg , bn , title , ROW_NUMBER() OVER(PARTITION BY num, ctg ORDER BY num, ctg, bn desc) rn FROM p) t
-    GROUP BY num, item
+    FROM  (SELECT num , ctg , bn , title , ROW_NUMBER() OVER ( PARTITION BY num, ctg ORDER BY num, ctg, bn desc) rn FROM p) t
+    GROUP BY num, ctg
   </select>
 </mapper>
 
